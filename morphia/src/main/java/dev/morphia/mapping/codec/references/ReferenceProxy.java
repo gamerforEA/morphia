@@ -16,7 +16,7 @@ import java.util.List;
  * @morphia.internal
  */
 public class ReferenceProxy implements MorphiaProxy, InvocationHandler {
-    private static final List<String> NONFETCHES = List.of("isEmpty", "size");
+    private static final List<String> NONFETCHES = java.util.Arrays.asList("isEmpty", "size");
     private MorphiaReference<?> reference;
 
     ReferenceProxy(final MorphiaReference<?> reference) {

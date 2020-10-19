@@ -43,7 +43,7 @@ public final class MathExpressions {
      * @aggregation.expression $divide
      */
     public static Expression divide(final Expression numerator, final Expression divisor) {
-        return new MathExpression("$divide", List.of(numerator, divisor));
+        return new MathExpression("$divide", java.util.Arrays.asList(numerator, divisor));
     }
 
     /**
@@ -124,7 +124,7 @@ public final class MathExpressions {
      * @aggregation.expression $log
      */
     public static Expression log(final Expression number, final Expression base) {
-        return new MathExpression("$log", List.of(number, base));
+        return new MathExpression("$log", java.util.Arrays.asList(number, base));
     }
 
     /**
@@ -147,7 +147,7 @@ public final class MathExpressions {
      * @aggregation.expression $mod
      */
     public static Expression mod(final Expression dividend, final Expression divisor) {
-        return new MathExpression("$mod", List.of(dividend, divisor));
+        return new MathExpression("$mod", java.util.Arrays.asList(dividend, divisor));
     }
 
     /**
@@ -159,7 +159,7 @@ public final class MathExpressions {
      * @aggregation.expression $pow
      */
     public static Expression pow(final Expression number, final Expression exponent) {
-        return new MathExpression("$pow", List.of(number, exponent));
+        return new MathExpression("$pow", java.util.Arrays.asList(number, exponent));
     }
 
     /**
@@ -197,7 +197,7 @@ public final class MathExpressions {
      * @aggregation.expression $subtract
      */
     public static Expression subtract(final Expression minuend, final Expression subtrahend) {
-        return new MathExpression("$subtract", List.of(minuend, subtrahend));
+        return new MathExpression("$subtract", java.util.Arrays.asList(minuend, subtrahend));
     }
 
     /**

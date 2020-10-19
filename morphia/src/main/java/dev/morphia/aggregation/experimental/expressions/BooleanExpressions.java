@@ -2,7 +2,7 @@ package dev.morphia.aggregation.experimental.expressions;
 
 import dev.morphia.aggregation.experimental.expressions.impls.Expression;
 
-import java.util.List;
+import java.util.Collections;
 
 import static dev.morphia.aggregation.experimental.expressions.Expressions.toList;
 
@@ -50,7 +50,7 @@ public final class BooleanExpressions {
      * @aggregation.expression $not
      */
     public static Expression not(final Expression value) {
-        return new Expression("$not", List.of(value));
+        return new Expression("$not", Collections.singletonList(value));
     }
 
 }

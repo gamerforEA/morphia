@@ -121,8 +121,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testAddFields() {
-        List<Document> list = List.of(
-            parse("{ _id: 1, student: 'Maya', homework: [ 10, 5, 10 ],quiz: [ 10, 8 ],extraCredit: 0 }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ _id: 1, student: 'Maya', homework: [ 10, 5, 10 ],quiz: [ 10, 8 ],extraCredit: 0 }"),
             parse("{ _id: 2, student: 'Ryan', homework: [ 5, 6, 5 ],quiz: [ 8, 8 ],extraCredit: 8 }"));
 
         getDatabase().getCollection("scores").insertMany(list);
@@ -137,8 +136,7 @@ public class AggregationTest extends TestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        list = List.of(
-            parse("{ '_id' : 1, 'student' : 'Maya', 'homework' : [ 10, 5, 10 ],'quiz' : [ 10, 8 ],'extraCredit' : 0, 'totalHomework' : 25,"
+        list = java.util.Arrays.asList(parse("{ '_id' : 1, 'student' : 'Maya', 'homework' : [ 10, 5, 10 ],'quiz' : [ 10, 8 ],'extraCredit' : 0, 'totalHomework' : 25,"
                   + " 'totalQuiz' : 18, 'totalScore' : 43 }"),
             parse("{ '_id' : 2, 'student' : 'Ryan', 'homework' : [ 5, 6, 5 ],'quiz' : [ 8, 8 ],'extraCredit' : 8, 'totalHomework' : 16, "
                   + "'totalQuiz' : 16, 'totalScore' : 40 }"));
@@ -148,8 +146,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testAutoBucket() {
-        List<Document> list = List.of(
-            parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99') }"),
+        List<Document> list = java.util.Arrays.asList(parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99') }"),
             parse("{'_id': 2, 'title': 'Melancholy III', 'artist': 'Munch', 'year': 1902, 'price': NumberDecimal('280.00') }"),
             parse("{'_id': 3, 'title': 'Dancer', 'artist': 'Miro', 'year': 1925, 'price': NumberDecimal('76.04') }"),
             parse("{'_id': 4, 'title': 'The Great Wave off Kanagawa', 'artist': 'Hokusai', 'price': NumberDecimal('167.30') }"),
@@ -167,8 +164,7 @@ public class AggregationTest extends TestBase {
                                         .execute(Document.class)
                                         .toList();
 
-        List<Document> documents = List.of(
-            parse("{'_id': { 'min': NumberDecimal('76.04'), 'max': NumberDecimal('159.00') },'count': 2}"),
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': { 'min': NumberDecimal('76.04'), 'max': NumberDecimal('159.00') },'count': 2}"),
             parse("{'_id': { 'min': NumberDecimal('159.00'), 'max': NumberDecimal('199.99') },'count': 2 }"),
             parse("{'_id': { 'min': NumberDecimal('199.99'), 'max': NumberDecimal('385.00') },'count': 2 }"),
             parse("{'_id': { 'min': NumberDecimal('385.00'), 'max': NumberDecimal('483.00') },'count': 2 }"));
@@ -178,8 +174,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testBucket() {
-        List<Document> list = List.of(
-            parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99') }"),
+        List<Document> list = java.util.Arrays.asList(parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99') }"),
             parse("{'_id': 2, 'title': 'Melancholy III', 'artist': 'Munch', 'year': 1902, 'price': NumberDecimal('280.00') }"),
             parse("{'_id': 3, 'title': 'Dancer', 'artist': 'Miro', 'year': 1925, 'price': NumberDecimal('76.04') }"),
             parse("{'_id': 4, 'title': 'The Great Wave off Kanagawa', 'artist': 'Hokusai', 'price': NumberDecimal('167.30') }"),
@@ -200,8 +195,7 @@ public class AggregationTest extends TestBase {
                                         .execute(Document.class)
                                         .toList();
 
-        List<Document> documents = List.of(
-            parse("{'_id': 0, 'count': 4, 'titles': ['The Pillars of Society', 'Dancer', 'The Great Wave off Kanagawa', 'Blue Flower']}"),
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': 0, 'count': 4, 'titles': ['The Pillars of Society', 'Dancer', 'The Great Wave off Kanagawa', 'Blue Flower']}"),
             parse("{'_id': 200, 'count': 2, 'titles': ['Melancholy III', 'Composition VII']}"),
             parse("{'_id': 'Other', 'count': 2, 'titles': ['The Persistence of Memory', 'The Scream']}"));
         assertEquals(documents, results);
@@ -239,8 +233,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testCount() {
-        List<Document> list = List.of(
-            parse("{ '_id' : 1, 'subject' : 'History', 'score' : 88 }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ '_id' : 1, 'subject' : 'History', 'score' : 88 }"),
             parse("{ '_id' : 2, 'subject' : 'History', 'score' : 92 }"),
             parse("{ '_id' : 3, 'subject' : 'History', 'score' : 97 }"),
             parse("{ '_id' : 4, 'subject' : 'History', 'score' : 71 }"),
@@ -259,8 +252,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testFacet() {
-        List<Document> list = List.of(
-            parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99'),"
+        List<Document> list = java.util.Arrays.asList(parse("{'_id': 1, 'title': 'The Pillars of Society', 'artist': 'Grosz', 'year': 1926, 'price': NumberDecimal('199.99'),"
                   + " 'tags': [ 'painting', 'satire', 'Expressionism', 'caricature' ] }"),
             parse("{'_id': 2, 'title': 'Melancholy III', 'artist': 'Munch', 'year': 1902, 'price': NumberDecimal('280.00'),"
                   + " 'tags': [ 'woodcut', 'Expressionism' ] }"),
@@ -330,7 +322,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testGraphLookup() {
-        List<Document> list = List.of(parse("{ '_id' : 1, 'name' : 'Dev' }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ '_id' : 1, 'name' : 'Dev' }"),
             parse("{ '_id' : 2, 'name' : 'Eliot', 'reportsTo' : 'Dev' }"),
             parse("{ '_id' : 3, 'name' : 'Ron', 'reportsTo' : 'Eliot' }"),
             parse("{ '_id' : 4, 'name' : 'Andrew', 'reportsTo' : 'Eliot' }"),
@@ -348,7 +340,7 @@ public class AggregationTest extends TestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(parse("{'_id': 1, 'name': 'Dev', 'reportingHierarchy': []}"),
+        List<Document> expected = java.util.Arrays.asList(parse("{'_id': 1, 'name': 'Dev', 'reportingHierarchy': []}"),
             parse("{'_id': 2, 'name': 'Eliot', 'reportsTo': 'Dev', 'reportingHierarchy': [{'_id': 1, 'name': 'Dev'}]}"),
             parse("{'_id': 3, 'name': 'Ron', 'reportsTo': 'Eliot', 'reportingHierarchy': [{'_id': 1, 'name': 'Dev'},{'_id': 2, 'name': "
                   + "'Eliot', 'reportsTo': 'Dev'}]}"),
@@ -449,8 +441,7 @@ public class AggregationTest extends TestBase {
         checkMinServerVersion(4.2);
         MongoCollection<Document> salaries = getDatabase().getCollection("salaries");
 
-        salaries.insertMany(List.of(
-            parse("{ '_id' : 1, employee: 'Ant', dept: 'A', salary: 100000, fiscal_year: 2017 }"),
+        salaries.insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, employee: 'Ant', dept: 'A', salary: 100000, fiscal_year: 2017 }"),
             parse("{ '_id' : 2, employee: 'Bee', dept: 'A', salary: 120000, fiscal_year: 2017 }"),
             parse("{ '_id' : 3, employee: 'Cat', dept: 'Z', salary: 115000, fiscal_year: 2017 }"),
             parse("{ '_id' : 4, employee: 'Ant', dept: 'A', salary: 115000, fiscal_year: 2018 }"),
@@ -472,8 +463,7 @@ public class AggregationTest extends TestBase {
                            .whenNotMatched(WhenNotMatched.INSERT));
         List<Document> actual = getDs().find("budgets", Document.class).iterator().toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : { 'fiscal_year' : 2017, 'dept' : 'A' }, 'salaries' : 220000 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : { 'fiscal_year' : 2017, 'dept' : 'A' }, 'salaries' : 220000 }"),
             parse("{ '_id' : { 'fiscal_year' : 2017, 'dept' : 'Z' }, 'salaries' : 115000 }"),
             parse("{ '_id' : { 'fiscal_year' : 2018, 'dept' : 'A' }, 'salaries' : 215000 }"),
             parse("{ '_id' : { 'fiscal_year' : 2018, 'dept' : 'Z' }, 'salaries' : 280000 }"),
@@ -524,8 +514,7 @@ public class AggregationTest extends TestBase {
     @Test
     public void testPlanCacheStats() {
         checkMinServerVersion(4.2);
-        List<Document> list = List.of(
-            parse("{ '_id' : 1, 'item' : 'abc', 'price' : NumberDecimal('12'), 'quantity' : 2, 'type': 'apparel' }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'abc', 'price' : NumberDecimal('12'), 'quantity' : 2, 'type': 'apparel' }"),
             parse("{ '_id' : 2, 'item' : 'jkl', 'price' : NumberDecimal('20'), 'quantity' : 1, 'type': 'electronics' }"),
             parse("{ '_id' : 3, 'item' : 'abc', 'price' : NumberDecimal('10'), 'quantity' : 5, 'type': 'apparel' }"),
             parse("{ '_id' : 4, 'item' : 'abc', 'price' : NumberDecimal('8'), 'quantity' : 10, 'type': 'apparel' }"),
@@ -619,8 +608,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testReplaceRoot() {
-        List<Document> documents = List.of(
-            parse("{'_id': 1, 'name': {'first': 'John', 'last': 'Backus'}}"),
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': 1, 'name': {'first': 'John', 'last': 'Backus'}}"),
             parse("{'_id': 2, 'name': {'first': 'John', 'last': 'McCarthy'}}"),
             parse("{'_id': 3, 'name': {'first': 'Grace', 'last': 'Hopper'}}"),
             parse("{'_id': 4, 'firstname': 'Ole-Johan', 'lastname': 'Dahl'}"));
@@ -676,8 +664,7 @@ public class AggregationTest extends TestBase {
     @Test
     public void testReplaceWith() {
         checkMinServerVersion(4.2);
-        List<Document> documents = List.of(
-            parse("{'_id': 1, 'name': {'first': 'John', 'last': 'Backus'}}"),
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': 1, 'name': {'first': 'John', 'last': 'Backus'}}"),
             parse("{'_id': 2, 'name': {'first': 'John', 'last': 'McCarthy'}}"),
             parse("{'_id': 3, 'name': {'first': 'Grace', 'last': 'Hopper'}}"),
             parse("{'_id': 4, 'firstname': 'Ole-Johan', 'lastname': 'Dahl'}"));
@@ -745,8 +732,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testSet() {
-        List<Document> list = List.of(
-            parse("{ _id: 1, student: 'Maya', homework: [ 10, 5, 10 ],quiz: [ 10, 8 ],extraCredit: 0 }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ _id: 1, student: 'Maya', homework: [ 10, 5, 10 ],quiz: [ 10, 8 ],extraCredit: 0 }"),
             parse("{ _id: 2, student: 'Ryan', homework: [ 5, 6, 5 ],quiz: [ 8, 8 ],extraCredit: 8 }"));
 
         getDatabase().getCollection("scores").insertMany(list);
@@ -761,8 +747,7 @@ public class AggregationTest extends TestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        list = List.of(
-            parse("{ '_id' : 1, 'student' : 'Maya', 'homework' : [ 10, 5, 10 ],'quiz' : [ 10, 8 ],'extraCredit' : 0, 'totalHomework' : 25,"
+        list = java.util.Arrays.asList(parse("{ '_id' : 1, 'student' : 'Maya', 'homework' : [ 10, 5, 10 ],'quiz' : [ 10, 8 ],'extraCredit' : 0, 'totalHomework' : 25,"
                   + " 'totalQuiz' : 18, 'totalScore' : 43 }"),
             parse("{ '_id' : 2, 'student' : 'Ryan', 'homework' : [ 5, 6, 5 ],'quiz' : [ 8, 8 ],'extraCredit' : 8, 'totalHomework' : 16, "
                   + "'totalQuiz' : 16, 'totalScore' : 40 }"));
@@ -773,8 +758,7 @@ public class AggregationTest extends TestBase {
     @Test
     public void testUnset() {
         checkMinServerVersion(4.2);
-        List<Document> documents = List.of(
-            parse("{'_id': 1, title: 'Antelope Antics', isbn: '0001122223334', author: {last:'An', first: 'Auntie' }, copies: "
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': 1, title: 'Antelope Antics', isbn: '0001122223334', author: {last:'An', first: 'Auntie' }, copies: "
                   + "[ {warehouse: 'A', qty: 5 }, {warehouse: 'B', qty: 15 } ] }"),
             parse("{'_id': 2, title: 'Bees Babble', isbn: '999999999333', author: {last:'Bumble', first: 'Bee' }, copies: [ "
                   + "{warehouse: 'A', qty: 2 }, {warehouse: 'B', qty: 5 } ] }"));

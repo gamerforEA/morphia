@@ -2,8 +2,6 @@ package dev.morphia.aggregation.experimental.expressions;
 
 import dev.morphia.aggregation.experimental.expressions.impls.Expression;
 
-import java.util.List;
-
 /**
  * Defines helper methods for the trigonometry expressions
  *
@@ -89,7 +87,7 @@ public final class TrigonometryExpressions {
      * @aggregation.expression $atan2
      */
     public static Expression atan2(final Expression yValue, final Expression xValue) {
-        return new Expression("$atan2", List.of(yValue, xValue));
+        return new Expression("$atan2", java.util.Arrays.asList(yValue, xValue));
     }
 
     /**

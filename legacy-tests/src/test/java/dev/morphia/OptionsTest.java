@@ -23,48 +23,48 @@ import java.util.List;
 public class OptionsTest {
     @Test
     public void aggregationOptions() {
-        scan(com.mongodb.AggregationOptions.class, AggregationOptions.class, false, List.of(ReadConcern.class, ReadPreference.class,
+        scan(com.mongodb.AggregationOptions.class, AggregationOptions.class, false, java.util.Arrays.asList(ReadConcern.class, ReadPreference.class,
             WriteConcern.class));
     }
 
     @Test
     public void countOptions() {
-        scan(com.mongodb.client.model.CountOptions.class, CountOptions.class, true, List.of(ReadConcern.class, ReadPreference.class));
+        scan(com.mongodb.client.model.CountOptions.class, CountOptions.class, true, java.util.Arrays.asList(ReadConcern.class, ReadPreference.class));
     }
 
     @Test
     public void deleteOptions() {
-        scan(com.mongodb.client.model.DeleteOptions.class, DeleteOptions.class, true, List.of(WriteConcern.class));
+        scan(com.mongodb.client.model.DeleteOptions.class, DeleteOptions.class, true, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     @Test
     public void findAndDeleteOptions() {
-        scan(FindOneAndDeleteOptions.class, FindAndDeleteOptions.class, true, List.of(WriteConcern.class));
+        scan(FindOneAndDeleteOptions.class, FindAndDeleteOptions.class, true, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     @Test
     public void findAndModifyOptions() {
-        scan(FindOneAndUpdateOptions.class, ModifyOptions.class, true, List.of(WriteConcern.class));
+        scan(FindOneAndUpdateOptions.class, ModifyOptions.class, true, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     @Test
     public void findOptions() {
-        beanScan(FindIterable.class, FindOptions.class, List.of("filter", "projection"));
+        beanScan(FindIterable.class, FindOptions.class, java.util.Arrays.asList("filter", "projection"));
     }
 
     @Test
     public void insertManyOptions() {
-        scan(com.mongodb.client.model.InsertManyOptions.class, InsertManyOptions.class, false, List.of(WriteConcern.class));
+        scan(com.mongodb.client.model.InsertManyOptions.class, InsertManyOptions.class, false, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     @Test
     public void insertOneOptions() {
-        scan(com.mongodb.client.model.InsertOneOptions.class, InsertOneOptions.class, false, List.of(WriteConcern.class));
+        scan(com.mongodb.client.model.InsertOneOptions.class, InsertOneOptions.class, false, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     @Test
     public void updateOptions() {
-        scan(com.mongodb.client.model.UpdateOptions.class, UpdateOptions.class, true, List.of(WriteConcern.class));
+        scan(com.mongodb.client.model.UpdateOptions.class, UpdateOptions.class, true, java.util.Collections.singletonList(WriteConcern.class));
     }
 
     private void beanScan(final Class<?> driver, final Class<?> morphia, final List<String> filtered) {

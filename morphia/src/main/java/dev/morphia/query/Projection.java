@@ -8,6 +8,7 @@ import dev.morphia.sofia.Sofia;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,7 +38,7 @@ public class Projection {
         if (excludes == null) {
             excludes = new ArrayList<>();
         }
-        excludes.addAll(List.of(fields));
+        excludes.addAll(Arrays.asList(fields));
         validateProjections();
         return options;
     }
@@ -67,7 +68,7 @@ public class Projection {
         if (includes == null) {
             includes = new ArrayList<>();
         }
-        includes.addAll(List.of(fields));
+        includes.addAll(Arrays.asList(fields));
         validateProjections();
         return options;
     }

@@ -85,7 +85,7 @@ public class TestQuery extends TestBase {
 
     @Test
     public void testAlternateCollections() {
-        getDs().save(new Photo(List.of("i", "am", "keywords")));
+        getDs().save(new Photo(Arrays.asList("i", "am", "keywords")));
 
         getDs().getMapper().getCollection(Photo.class)
                .renameCollection(new MongoNamespace(getDatabase().getName(), "alternate"));
@@ -117,7 +117,7 @@ public class TestQuery extends TestBase {
 
     @Test
     public void multiKeyValueQueries() {
-        getMapper().map(List.of(KeyValue.class));
+        getMapper().map(java.util.Collections.singletonList(KeyValue.class));
         getDs().ensureIndexes(KeyValue.class);
         final KeyValue value = new KeyValue();
         final List<Object> keys = Arrays.asList("key1", "key2");

@@ -10,6 +10,7 @@ import dev.morphia.utils.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -197,7 +198,7 @@ public class FieldEndImpl<T extends CriteriaContainer> implements FieldEnd<T> {
     @Override
     public T near(final double longitude, final double latitude, final double radius, final boolean spherical) {
         return addGeoCriteria(spherical ? FilterOperator.NEAR_SPHERE : FilterOperator.NEAR, new double[]{longitude, latitude},
-            Map.of("$maxDistance", radius));
+            Collections.singletonMap("$maxDistance", radius));
     }
 
     @Override

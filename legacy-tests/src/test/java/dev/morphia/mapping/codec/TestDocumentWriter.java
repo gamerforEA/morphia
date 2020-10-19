@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-import java.util.List;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
@@ -159,7 +159,7 @@ public class TestDocumentWriter extends TestBase {
         endArray(writer);
         endArray(writer);
         endDoc(writer);
-        Document top = new Document("top", List.of(List.of(1, 2, 3, new Document("nested", "string"))));
+        Document top = new Document("top", Collections.singletonList(java.util.Arrays.asList(1, 2, 3, new Document("nested", "string"))));
         assertEquals(top, writer.getDocument());
     }
 

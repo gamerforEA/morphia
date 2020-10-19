@@ -3,6 +3,7 @@ package taglets;
 import com.sun.source.doctree.DocTree;
 
 import javax.lang.model.element.Element;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class InlineTaglet extends DocTaglet {
 
     @Override
     public Set<Location> getAllowedLocations() {
-        return Set.of(METHOD);
+        return Collections.singleton(METHOD);
     }
 
     @Override

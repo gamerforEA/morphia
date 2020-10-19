@@ -115,7 +115,7 @@ public class TestMapping extends TestBase {
         ContainsFinalField value = new ContainsFinalField();
         ConstructorBased instance = new ConstructorBased(new ObjectId(), "test instance", MorphiaReference.wrap(value));
 
-        getDs().save(List.of(value, instance));
+        getDs().save(java.util.Arrays.asList(value, instance));
 
         ConstructorBased first = getDs().find(ConstructorBased.class).first();
         assertNotNull(first);
@@ -196,7 +196,7 @@ public class TestMapping extends TestBase {
     @Test
     public void testBasicMapping() {
         Mapper mapper = getDs().getMapper();
-        mapper.map(List.of(State.class, CityPopulation.class));
+        mapper.map(java.util.Arrays.asList(State.class, CityPopulation.class));
 
         final State state = new State();
         state.state = "NY";
@@ -212,10 +212,10 @@ public class TestMapping extends TestBase {
         assertEquals(state, loaded);
 
         MappedClass mappedClass = mapper.getMappedClass(State.class);
-        assertEquals(List.of("_id", "state", "biggestCity", "smallestCity"), mappedClass.getFields()
-                                                                                        .stream()
-                                                                                        .map(MappedField::getMappedFieldName)
-                                                                                        .collect(toList()));
+        assertEquals(java.util.Arrays.asList("_id", "state", "biggestCity", "smallestCity"), mappedClass.getFields()
+                                                                                                        .stream()
+                                                                                                        .map(MappedField::getMappedFieldName)
+                                                                                                        .collect(toList()));
     }
 
     @Test
@@ -645,7 +645,7 @@ public class TestMapping extends TestBase {
 
     @Test
     public void testUuidId() {
-        getMapper().map(List.of(ContainsUuidId.class));
+        getMapper().map(Collections.singletonList(ContainsUuidId.class));
         final ContainsUuidId uuidId = new ContainsUuidId();
         final UUID before = uuidId.id;
         getDs().save(uuidId);

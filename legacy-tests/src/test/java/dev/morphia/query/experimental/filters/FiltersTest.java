@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -157,7 +158,7 @@ public class FiltersTest extends TestBase {
 
     @Test
     public void testSize() {
-        getDs().save(List.of(new User("John", new Date(), "puppies", "kittens", "heavy metal"),
+        getDs().save(Arrays.asList(new User("John", new Date(), "puppies", "kittens", "heavy metal"),
             new User("Janice", new Date(), "Chandler", "NYC")));
 
         User likes = getDs().find(User.class)

@@ -201,7 +201,7 @@ public class FiltersTest extends TestBase {
 
     @Test
     public void testSize() {
-        getDs().save(List.of(new User("John", LocalDate.now(), "puppies", "kittens", "heavy metal"),
+        getDs().save(java.util.Arrays.asList(new User("John", LocalDate.now(), "puppies", "kittens", "heavy metal"),
             new User("Janice", LocalDate.now(), "Chandler", "NYC")));
 
         User likes = getDs().find(User.class)

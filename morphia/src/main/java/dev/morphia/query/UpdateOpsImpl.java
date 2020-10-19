@@ -9,8 +9,8 @@ import dev.morphia.query.experimental.updates.UpdateOperators;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @param <T> the type to update
@@ -177,7 +177,7 @@ public class UpdateOpsImpl<T> extends UpdateBase<T> implements UpdateOperations<
 
     @Override
     public UpdateOperations<T> setOnInsert(final String field, final Object value) {
-        add(UpdateOperators.setOnInsert(Map.of(field, value)));
+        add(UpdateOperators.setOnInsert(Collections.singletonMap(field, value)));
         return this;
     }
 

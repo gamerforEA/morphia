@@ -3,27 +3,12 @@ package dev.morphia.test.aggregation.experimental.expressions;
 import dev.morphia.aggregation.experimental.expressions.StringExpressions;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 import static dev.morphia.aggregation.experimental.expressions.Expressions.value;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.concat;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.indexOfBytes;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.indexOfCP;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.ltrim;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.regexFind;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.regexFindAll;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.regexMatch;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.rtrim;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.split;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.strLenBytes;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.strLenCP;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.strcasecmp;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.substrBytes;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.substrCP;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.toLower;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.toUpper;
-import static dev.morphia.aggregation.experimental.expressions.StringExpressions.trim;
+import static dev.morphia.aggregation.experimental.expressions.StringExpressions.*;
 import static org.bson.Document.parse;
 
 public class StringExpressionsTest extends ExpressionsTestBase {
@@ -84,12 +69,12 @@ public class StringExpressionsTest extends ExpressionsTestBase {
         checkMinServerVersion(4.2);
         assertAndCheckDocShape("{ $regexFindAll: { input: 'winter wonderland', regex: /inter/ } }",
             regexFindAll(value("winter wonderland")).pattern("inter"),
-            List.of(parse("{match: 'inter', idx:1, captures:[]}")));
+            Collections.singletonList(parse("{match: 'inter', idx:1, captures:[]}")));
         assertAndCheckDocShape("{ $regexFindAll: { input: 'winter wonderland', regex: /inter/ } }",
             regexFindAll(value("winter wonderland")).pattern(Pattern.compile("inter")),
-            List.of(parse("{match: 'inter', idx:1, captures:[]}")));
+            Collections.singletonList(parse("{match: 'inter', idx:1, captures:[]}")));
         assertAndCheckDocShape("{ $regexFindAll: { input: 'winter wonderland', regex: /splinter/ } }",
-            regexFindAll(value("winter wonderland")).pattern("splinter"), List.of());
+            regexFindAll(value("winter wonderland")).pattern("splinter"), Collections.emptyList());
     }
 
     @Test
@@ -116,7 +101,7 @@ public class StringExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testSplit() {
         assertAndCheckDocShape("{ $split: [ 'June-15-2013', '-' ] }", split(value("June-15-2013"), value("-")),
-            List.of("June", "15", "2013"));
+            Arrays.asList("June", "15", "2013"));
     }
 
     @Test

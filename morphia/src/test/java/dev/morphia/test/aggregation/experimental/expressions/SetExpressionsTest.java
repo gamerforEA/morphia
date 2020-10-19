@@ -2,16 +2,11 @@ package dev.morphia.test.aggregation.experimental.expressions;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 
 import static dev.morphia.aggregation.experimental.expressions.Expressions.value;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.allElementsTrue;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.anyElementTrue;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setDifference;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setEquals;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setIntersection;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setIsSubset;
-import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setUnion;
+import static dev.morphia.aggregation.experimental.expressions.SetExpressions.*;
 import static java.util.Arrays.asList;
 
 public class SetExpressionsTest extends ExpressionsTestBase {
@@ -19,11 +14,11 @@ public class SetExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testAllElementsTrue() {
         assertAndCheckDocShape("{ $allElementsTrue: [ [ true, 1, 'someString' ] ] }",
-            allElementsTrue(value(List.of(value(true), value(1), value("someString")))), true);
+            allElementsTrue(value(Arrays.asList(value(true), value(1), value("someString")))), true);
         assertAndCheckDocShape("{ $allElementsTrue: [ [ [ false ] ] ] }",
-            allElementsTrue(value(List.of(List.of(false)))), true);
+            allElementsTrue(value(Collections.singletonList(Collections.singletonList(false)))), true);
         assertAndCheckDocShape("{ $allElementsTrue: [ [ ] ] }",
-            allElementsTrue(value(List.of())), true);
+            allElementsTrue(value(Collections.emptyList())), true);
         assertAndCheckDocShape("{ $allElementsTrue: [ [ null, false, 0 ] ] }",
             allElementsTrue(value(asList(null, false, 0))), false);
     }
@@ -36,7 +31,7 @@ public class SetExpressionsTest extends ExpressionsTestBase {
         assertAndCheckDocShape("{ $anyElementTrue: [ [ null, false, 0 ] ] }",
             anyElementTrue(value(asList(null, false, 0))), false);
         assertAndCheckDocShape("{ $anyElementTrue: [ [ ] ] }",
-            anyElementTrue(value(List.of())), false);
+            anyElementTrue(value(Collections.emptyList())), false);
     }
 
     @Test

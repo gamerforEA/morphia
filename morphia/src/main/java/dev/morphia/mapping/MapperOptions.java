@@ -221,7 +221,7 @@ public class MapperOptions {
         private boolean mapSubPackages;
         private MorphiaInstanceCreator creator;
         private ClassLoader classLoader;
-        private final List<MorphiaConvention> conventions = new ArrayList<>(List.of(new MorphiaDefaultsConvention()));
+        private final List<MorphiaConvention> conventions = new ArrayList<>(Collections.singletonList(new MorphiaDefaultsConvention()));
         private String discriminatorKey = "_t";
         private DiscriminatorFunction discriminator = DiscriminatorFunction.simpleName();
         private DateStorage dateStorage = DateStorage.UTC;

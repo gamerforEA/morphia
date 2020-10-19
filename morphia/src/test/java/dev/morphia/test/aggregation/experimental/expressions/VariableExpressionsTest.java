@@ -17,8 +17,7 @@ import static org.bson.Document.parse;
 public class VariableExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testLet() {
-        getDatabase().getCollection("sales").insertMany(List.of(
-            parse("{ _id: 1, price: 10, tax: 0.50, applyDiscount: true }"),
+        getDatabase().getCollection("sales").insertMany(java.util.Arrays.asList(parse("{ _id: 1, price: 10, tax: 0.50, applyDiscount: true }"),
             parse("{ _id: 2, price: 10, tax: 0.25, applyDiscount: false }")));
 
         List<Document> actual = getDs().aggregate("sales")
@@ -31,8 +30,7 @@ public class VariableExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 1, 'finalTotal' : 9.450000000000001 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'finalTotal' : 9.450000000000001 }"),
             parse("{ '_id' : 2, 'finalTotal' : 10.25 }"));
 
         assertDocumentEquals(expected, actual);

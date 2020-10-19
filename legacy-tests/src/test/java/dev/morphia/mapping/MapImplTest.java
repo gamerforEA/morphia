@@ -76,7 +76,7 @@ public class MapImplTest extends TestBase {
 
     @Test
     public void testEmbeddedMapUpdateOperationsOnInterfaceValue() {
-        getMapper().map(List.of(MapOfInterfaces.class));
+        getMapper().map(java.util.Collections.singletonList(MapOfInterfaces.class));
         final Goo g1 = new Goo("Scott");
         final Goo g2 = new Goo("Ralph");
 

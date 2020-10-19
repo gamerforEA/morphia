@@ -26,6 +26,7 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -88,7 +89,7 @@ public class GenericsMappingTest extends TestBase {
         getMapper().map(Status.class, EmailStatus.class);
 
         Status<EmailItem> status = new EmailStatus();
-        status.items = List.of(new EmailItem("help@example.org"));
+        status.items = Collections.singletonList(new EmailItem("help@example.org"));
 
         getDs().save(status);
 

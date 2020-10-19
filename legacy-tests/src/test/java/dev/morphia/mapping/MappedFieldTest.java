@@ -10,10 +10,7 @@ import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static dev.morphia.query.experimental.filters.Filters.eq;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +23,7 @@ public class MappedFieldTest extends TestBase {
 
     @Before
     public void mapping() {
-        getMapper().map(List.of(TestEntity.class));
+        getMapper().map(Collections.singletonList(TestEntity.class));
         mappedClass = getMapper().getMappedClass(TestEntity.class);
     }
     @Test

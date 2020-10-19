@@ -74,7 +74,7 @@ public class TestTransactions extends TestBase {
 
     @Test
     public void insertList() {
-        List<Rectangle> rectangles = List.of(new Rectangle(5, 7),
+        List<Rectangle> rectangles = java.util.Arrays.asList(new Rectangle(5, 7),
             new Rectangle(1, 1));
 
         getDs().withTransaction((session) -> {
@@ -203,7 +203,7 @@ public class TestTransactions extends TestBase {
 
     @Test
     public void saveList() {
-        List<Rectangle> rectangles = List.of(new Rectangle(5, 7),
+        List<Rectangle> rectangles = java.util.Arrays.asList(new Rectangle(5, 7),
             new Rectangle(1, 1));
 
         getDs().withTransaction((session) -> {

@@ -19,8 +19,7 @@ public class ExpressionsTest extends ExpressionsTestBase {
     public void testMeta() {
         MongoCollection<Document> articles = getDatabase().getCollection("articles");
         articles.createIndex(new Document("title", "text"));
-        articles.insertMany(List.of(
-            parse("{ '_id' : 1, 'title' : 'cakes and ale' }"),
+        articles.insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, 'title' : 'cakes and ale' }"),
             parse("{ '_id' : 2, 'title' : 'more cakes' }"),
             parse("{ '_id' : 3, 'title' : 'bread' }"),
             parse("{ '_id' : 4, 'title' : 'some cakes' }")));
@@ -32,8 +31,7 @@ public class ExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 0.75, 'count' : 1 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 0.75, 'count' : 1 }"),
             parse("{ '_id' : 1.0, 'count' : 2 }"));
 
         assertDocumentEquals(expected, actual);

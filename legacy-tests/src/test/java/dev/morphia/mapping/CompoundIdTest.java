@@ -2,18 +2,14 @@ package dev.morphia.mapping;
 
 
 import dev.morphia.TestBase;
-import dev.morphia.annotations.Embedded;
-import dev.morphia.annotations.Entity;
-import dev.morphia.annotations.Id;
-import dev.morphia.annotations.Reference;
-import dev.morphia.annotations.Version;
+import dev.morphia.annotations.*;
 import dev.morphia.query.FindOptions;
 import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.util.List;
+import java.util.Arrays;
 
 import static dev.morphia.query.experimental.filters.Filters.eq;
 
@@ -22,7 +18,7 @@ public class CompoundIdTest extends TestBase {
 
     @Test
     public void testFetchKey() {
-        getMapper().map(List.of(ConfigKey.class, ConfigEntry.class));
+        getMapper().map(Arrays.asList(ConfigKey.class, ConfigEntry.class));
         getDs().save(new ConfigEntry(new ConfigKey("env", "key", "subenv")));
         ConfigEntry entry = getDs().find(ConfigEntry.class).iterator(new FindOptions().limit(1))
                                    .next();

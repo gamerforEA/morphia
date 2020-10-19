@@ -18,14 +18,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 import static morphia.org.bson.codecs.pojo.PojoSpecializationHelper.specializeTypeData;
 
@@ -253,8 +246,8 @@ public class EntityModelBuilder<T> {
             } else {
                 classes.add(type);
             }
-            annotations.addAll(Set.of(type.getAnnotations()));
-            interfaces.addAll(Set.of(type.getInterfaces()));
+            annotations.addAll(new HashSet<>(Arrays.asList(type.getAnnotations())));
+            interfaces.addAll(new HashSet<>(Arrays.asList(type.getInterfaces())));
             buildHierarchy(type.getSuperclass());
 
             for (Class<?> anInterface : type.getInterfaces()) {

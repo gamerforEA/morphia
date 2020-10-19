@@ -36,12 +36,7 @@ import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import static dev.morphia.query.experimental.filters.Filters.eq;
@@ -441,7 +436,7 @@ public class DatastoreImpl implements AdvancedDatastore {
     @SuppressWarnings("unchecked")
     public <T> List<T> save(final List<T> entities, final InsertManyOptions options) {
         if (entities.isEmpty()) {
-            return List.of();
+            return Collections.emptyList();
         }
 
         Map<MongoCollection, List<T>> grouped = new LinkedHashMap<>();

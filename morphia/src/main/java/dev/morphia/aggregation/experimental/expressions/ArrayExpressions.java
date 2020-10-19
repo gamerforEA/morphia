@@ -1,17 +1,8 @@
 package dev.morphia.aggregation.experimental.expressions;
 
-import dev.morphia.aggregation.experimental.expressions.impls.ArrayExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.ArrayFilterExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.ArrayIndexExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.ArrayLiteral;
-import dev.morphia.aggregation.experimental.expressions.impls.Expression;
-import dev.morphia.aggregation.experimental.expressions.impls.MapExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.RangeExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.ReduceExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.SliceExpression;
-import dev.morphia.aggregation.experimental.expressions.impls.ZipExpression;
+import dev.morphia.aggregation.experimental.expressions.impls.*;
 
-import java.util.List;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 
@@ -45,7 +36,7 @@ public final class ArrayExpressions {
      * @aggregation.expression $arrayElemAt
      */
     public static Expression elementAt(final Expression array, final Expression index) {
-        return new Expression("$arrayElemAt", List.of(array, index));
+        return new Expression("$arrayElemAt", java.util.Arrays.asList(array, index));
     }
 
     /**
@@ -103,7 +94,7 @@ public final class ArrayExpressions {
      * @aggregation.expression $in
      */
     public static Expression in(final Expression search, final Expression array) {
-        return new Expression("$in", List.of(search, array));
+        return new Expression("$in", java.util.Arrays.asList(search, array));
     }
 
     /**
@@ -127,7 +118,7 @@ public final class ArrayExpressions {
      * @aggregation.expression $isArray
      */
     public static Expression isArray(final Expression array) {
-        return new Expression("$isArray", List.of(array));
+        return new Expression("$isArray", Collections.singletonList(array));
     }
 
     /**

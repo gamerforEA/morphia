@@ -21,15 +21,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 import static dev.morphia.aggregation.experimental.stages.Unwind.on;
 import static dev.morphia.mapping.lazy.LazyFeatureDependencies.assertProxyClassesPresent;
@@ -86,8 +78,8 @@ public class ReferenceTest extends ProxyTestBase {
     public void testComplexIds() {
         ComplexParent parent = new ComplexParent();
         parent.complex = new Complex(new ChildId("Bob", 67), "Kelso");
-        parent.list = List.of(new Complex(new ChildId("Turk", 27), "Turk"));
-        parent.lazyList = List.of(new Complex(new ChildId("Bippity", 67), "Boppity"));
+        parent.list = Collections.singletonList(new Complex(new ChildId("Turk", 27), "Turk"));
+        parent.lazyList = Collections.singletonList(new Complex(new ChildId("Bippity", 67), "Boppity"));
 
         getDs().save(parent.complex);
         getDs().save(parent.list);
@@ -248,7 +240,7 @@ public class ReferenceTest extends ProxyTestBase {
                 new Ref[]{ref1, ref2}
             }
         };
-        a.lists = List.of(List.of(List.of(ref1), List.of(ref2)));
+        a.lists = Collections.singletonList(Arrays.asList(Collections.singletonList(ref1), Collections.singletonList(ref2)));
         getDs().save(asList(ref2, ref1, a));
 
         assertEquals(a, getDs().find(MultiDimArrayOfReferences.class)

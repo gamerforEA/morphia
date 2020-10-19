@@ -44,15 +44,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static dev.morphia.query.experimental.filters.Filters.eq;
@@ -435,7 +427,7 @@ public class TestUpdateOps extends TestBase {
         Datastore ds = getDs();
         Query<Circle> query = ds.find(Circle.class)
                                 .filter(eq("id", id));
-        assertInserted(query.update(setOnInsert(Map.of("radius", originalValue)))
+        assertInserted(query.update(setOnInsert(Collections.singletonMap("radius", originalValue)))
                             .execute(new UpdateOptions().upsert(true)));
 
         assertEquals(1, query.update(max("radius", 1D))
@@ -601,7 +593,7 @@ public class TestUpdateOps extends TestBase {
                .filter(regex("opaqueId")
                            .pattern("ID")
                            .caseInsensitive())
-               .update(pullAll("fromArray", List.of(new DumbArrayElement("something"))))
+               .update(pullAll("fromArray", Collections.singletonList(new DumbArrayElement("something"))))
                .execute();
     }
 
@@ -626,7 +618,7 @@ public class TestUpdateOps extends TestBase {
 
         Query<Circle> query = getDs().find(Circle.class)
                                      .filter(eq("id", id));
-        assertInserted(query.update(setOnInsert(Map.of("radius", 2D)))
+        assertInserted(query.update(setOnInsert(Collections.singletonMap("radius", 2D)))
                             .execute(new UpdateOptions().upsert(true)));
 
         final Circle updatedCircle = getDs().find(Circle.class)
@@ -645,11 +637,11 @@ public class TestUpdateOps extends TestBase {
                                   .find(Circle.class)
                                   .filter(eq("id", id));
 
-        assertInserted(query.update(setOnInsert(Map.of("radius", 1D)))
+        assertInserted(query.update(setOnInsert(Collections.singletonMap("radius", 1D)))
                             .execute(new UpdateOptions()
                                          .upsert(true)));
 
-        assertEquals(1, query.update(setOnInsert(Map.of("radius", 2D)))
+        assertEquals(1, query.update(setOnInsert(Collections.singletonMap("radius", 2D)))
                              .execute(new UpdateOptions()
                                           .upsert(true)).getMatchedCount());
 
@@ -726,7 +718,7 @@ public class TestUpdateOps extends TestBase {
         pic.setName("fist again");
         ds.save(pic);
 
-        cpk.keys = MorphiaReference.wrap(List.of(pic));
+        cpk.keys = MorphiaReference.wrap(Collections.singletonList(pic));
 
         //test with Key<Pic>
         Query<ContainsPicKey> query = ds.find(ContainsPicKey.class)

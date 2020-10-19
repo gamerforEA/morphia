@@ -300,7 +300,8 @@ public class MappedField {
     }
 
     private String getFirstFieldName(final Document document) {
-        List<String> names = List.of(getMappedFieldName());
+        List<String> names = new ArrayList<>();
+        names.add(getMappedFieldName());
         names.addAll(getLoadNames());
         List<String> list = names.stream()
                                  .filter(name -> document.containsKey(name))

@@ -40,8 +40,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : { 'day' : 46, 'year' : 2014 }, 'itemsSold' : [ 'xyz', 'abc' ] }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : { 'day' : 46, 'year' : 2014 }, 'itemsSold' : [ 'xyz', 'abc' ] }"),
             parse("{ '_id' : { 'day' : 34, 'year' : 2014 }, 'itemsSold' : [ 'xyz', 'jkl' ] }"),
             parse("{ '_id' : { 'day' : 1, 'year' : 2014 }, 'itemsSold' : [ 'abc' ] }"));
 
@@ -60,8 +59,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{'_id' : 'jkl', 'avgAmount' : 20.0, 'avgQuantity' : 1.0 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{'_id' : 'jkl', 'avgAmount' : 20.0, 'avgQuantity' : 1.0 }"),
             parse("{'_id' : 'abc', 'avgAmount' : 60.0, 'avgQuantity' : 6.0 }"),
             parse("{'_id' : 'xyz', 'avgAmount' : 37.5, 'avgQuantity' : 7.5 }"));
 
@@ -80,8 +78,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 'xyz', 'firstSalesDate' : ISODate('2014-02-03T09:05:00Z') }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 'xyz', 'firstSalesDate' : ISODate('2014-02-03T09:05:00Z') }"),
             parse("{ '_id' : 'jkl', 'firstSalesDate' : ISODate('2014-02-03T09:00:00Z') }"),
             parse("{ '_id' : 'abc', 'firstSalesDate' : ISODate('2014-01-01T08:00:00Z') }"));
 
@@ -100,8 +97,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 'xyz', 'lastSalesDate' : ISODate('2014-02-15T14:12:12Z') }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 'xyz', 'lastSalesDate' : ISODate('2014-02-15T14:12:12Z') }"),
             parse("{ '_id' : 'jkl', 'lastSalesDate' : ISODate('2014-02-03T09:00:00Z') }"),
             parse("{ '_id' : 'abc', 'lastSalesDate' : ISODate('2014-02-15T08:00:00Z') }"));
 
@@ -120,8 +116,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{'_id' : 'jkl', 'avgAmount' : 20.0, 'avgQuantity' : 1.0 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{'_id' : 'jkl', 'avgAmount' : 20.0, 'avgQuantity' : 1.0 }"),
             parse("{'_id' : 'abc', 'avgAmount' : 60.0, 'avgQuantity' : 6.0 }"),
             parse("{'_id' : 'xyz', 'avgAmount' : 37.5, 'avgQuantity' : 7.5 }"));
 
@@ -139,8 +134,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 'xyz', 'minQuantity' : 5 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 'xyz', 'minQuantity' : 5 }"),
             parse("{ '_id' : 'jkl', 'minQuantity' : 1 }"),
             parse("{ '_id' : 'abc', 'minQuantity' : 2 }"));
 
@@ -161,8 +155,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : { 'day' : 46, 'year' : 2014 },'itemsSold' : [{ 'item' : 'abc', 'quantity' : 10 }, { 'item' : 'xyz', "
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : { 'day' : 46, 'year' : 2014 },'itemsSold' : [{ 'item' : 'abc', 'quantity' : 10 }, { 'item' : 'xyz', "
                   + "'quantity' : 10 },{ 'item' : 'xyz', 'quantity' : 5 },{ 'item' : 'xyz', 'quantity' : 10 }]}"),
             parse("{ '_id' : { 'day' : 34, 'year' : 2014 },'itemsSold' : [{ 'item' : 'jkl', 'quantity' : 1 },{ 'item' : 'xyz', "
                   + "'quantity' : 5 }]}"),
@@ -173,8 +166,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
 
     @Test
     public void testStdDevPop() {
-        getDatabase().getCollection("users").insertMany(List.of(
-            parse(" { '_id' : 1, 'name' : 'dave123', 'quiz' : 1, 'score' : 85 }"),
+        getDatabase().getCollection("users").insertMany(java.util.Arrays.asList(parse(" { '_id' : 1, 'name' : 'dave123', 'quiz' : 1, 'score' : 85 }"),
             parse("{ '_id' : 2, 'name' : 'dave2', 'quiz' : 1, 'score' : 90 }"),
             parse("{ '_id' : 3, 'name' : 'ahn', 'quiz' : 1, 'score' : 71 }"),
             parse("{ '_id' : 4, 'name' : 'li', 'quiz' : 2, 'score' : 96 }"),
@@ -187,8 +179,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 2, 'stdDev' : 8.04155872120988 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 2, 'stdDev' : 8.04155872120988 }"),
             parse("{ '_id' : 1, 'stdDev' : 8.04155872120988 }"));
 
         assertDocumentEquals(expected, actual);
@@ -218,8 +209,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : { 'day' : 46, 'year' : 2014 }, 'totalAmount' : 150, 'count' : 2 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : { 'day' : 46, 'year' : 2014 }, 'totalAmount' : 150, 'count' : 2 }"),
             parse("{ '_id' : { 'day' : 34, 'year' : 2014 }, 'totalAmount' : 45, 'count' : 2 }"),
             parse("{ '_id' : { 'day' : 1, 'year' : 2014 }, 'totalAmount' : 20, 'count' : 1 }"));
 
@@ -227,8 +217,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
     }
 
     private void largerDataSet() {
-        getDatabase().getCollection("sales").insertMany(List.of(
-            parse("{ '_id' : 1, 'item' : 'abc', 'price' : 10, 'quantity' : 2, 'date' : ISODate('2014-01-01T08:00:00Z') }"),
+        getDatabase().getCollection("sales").insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'abc', 'price' : 10, 'quantity' : 2, 'date' : ISODate('2014-01-01T08:00:00Z') }"),
             parse("{ '_id' : 2, 'item' : 'jkl', 'price' : 20, 'quantity' : 1, 'date' : ISODate('2014-02-03T09:00:00Z') }"),
             parse("{ '_id' : 3, 'item' : 'xyz', 'price' : 5, 'quantity' : 5, 'date' : ISODate('2014-02-03T09:05:00Z') }"),
             parse("{ '_id' : 4, 'item' : 'abc', 'price' : 10, 'quantity' : 10, 'date' : ISODate('2014-02-15T08:00:00Z') }"),
@@ -238,8 +227,7 @@ public class AccumulatorExpressionsTest extends ExpressionsTestBase {
     }
 
     private void regularDataSet() {
-        getDatabase().getCollection("sales").insertMany(List.of(
-            parse("{ '_id' : 1, 'item' : 'abc', 'price' : 10, 'quantity' : 2, 'date' : ISODate('2014-01-01T08:00:00Z') }"),
+        getDatabase().getCollection("sales").insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'abc', 'price' : 10, 'quantity' : 2, 'date' : ISODate('2014-01-01T08:00:00Z') }"),
             parse("{ '_id' : 2, 'item' : 'jkl', 'price' : 20, 'quantity' : 1, 'date' : ISODate('2014-02-03T09:00:00Z') }"),
             parse("{ '_id' : 3, 'item' : 'xyz', 'price' : 5, 'quantity' : 5, 'date' : ISODate('2014-02-03T09:05:00Z') }"),
             parse("{ '_id' : 4, 'item' : 'abc', 'price' : 10, 'quantity' : 10, 'date' : ISODate('2014-02-15T08:00:00Z') }"),

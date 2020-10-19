@@ -97,8 +97,8 @@ public class AggregationTest extends TestBase {
                                                      .stream()
                                                      .collect(Collectors.groupingBy(a -> a.name));
         Assert.assertEquals("Expecting two results", 2, authors.size());
-        Assert.assertEquals(authors.toString(), List.of("The Banquet", "Divine Comedy", "Eclogues"), authors.get("Dante").get(0).books);
-        Assert.assertEquals(authors.toString(), List.of("The Odyssey", "Iliad"), authors.get("Homer").get(0).books);
+        Assert.assertEquals(authors.toString(), java.util.Arrays.asList("The Banquet", "Divine Comedy", "Eclogues"), authors.get("Dante").get(0).books);
+        Assert.assertEquals(authors.toString(), java.util.Arrays.asList("The Odyssey", "Iliad"), authors.get("Homer").get(0).books);
     }
 
     @Test

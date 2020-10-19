@@ -37,7 +37,7 @@ public class MorphiaCodecProvider implements CodecProvider {
         this.datastore = datastore;
         this.mapper = mapper;
 
-        propertyCodecProviders = List.of(new MorphiaMapPropertyCodecProvider(),
+        propertyCodecProviders = java.util.Arrays.asList(new MorphiaMapPropertyCodecProvider(),
             new MorphiaCollectionPropertyCodecProvider());
     }
 

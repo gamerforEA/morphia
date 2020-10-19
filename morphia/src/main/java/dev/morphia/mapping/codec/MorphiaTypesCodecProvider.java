@@ -40,7 +40,7 @@ public class MorphiaTypesCodecProvider implements CodecProvider {
         addCodec(new MorphiaQueryCodec(mapper));
         addCodec(new URICodec());
 
-        List.of(boolean.class, Boolean.class,
+        java.util.Arrays.asList(boolean.class, Boolean.class,
             byte.class, Byte.class,
             char.class, Character.class,
             double.class, Double.class,

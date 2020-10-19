@@ -67,11 +67,9 @@ public class DocumentReaderTest extends TestBase {
     @Test
     public void nested() {
         setup(new Document("key", new Document("nested", "detsen"))
-                  .append("list", List.of(
-                      new Document("list1", "value1"),
+                  .append("list", java.util.Arrays.asList(new Document("list1", "value1"),
                       new Document("list2", "value2"),
-                      new Document("list3", "value3")
-                                         )));
+                      new Document("list3", "value3"))));
 
         step(r -> {
             r.readStartDocument();
@@ -136,7 +134,7 @@ public class DocumentReaderTest extends TestBase {
     @Test
     public void read() {
         setup(new Document("key", "value")
-                  .append("numbers", List.of(1, 2, 3, 4, 5))
+                  .append("numbers", java.util.Arrays.asList(1, 2, 3, 4, 5))
                   .append("another", "entry"));
 
         step(r -> {

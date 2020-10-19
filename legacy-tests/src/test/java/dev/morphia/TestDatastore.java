@@ -224,7 +224,7 @@ public class TestDatastore extends TestBase {
     @Test
     public void testLifecycle() {
         final LifecycleTestObj life1 = new LifecycleTestObj();
-        getMapper().map(List.of(LifecycleTestObj.class));
+        getMapper().map(java.util.Collections.singletonList(LifecycleTestObj.class));
         getDs().save(life1);
         assertTrue(LifecycleListener.foundDatastore);
         assertTrue(life1.prePersist);
@@ -247,7 +247,7 @@ public class TestDatastore extends TestBase {
     @Test
     public void testLifecycleListeners() {
         final LifecycleTestObj life1 = new LifecycleTestObj();
-        getMapper().map(List.of(LifecycleTestObj.class));
+        getMapper().map(java.util.Collections.singletonList(LifecycleTestObj.class));
         getDs().save(life1);
         assertTrue(LifecycleListener.prePersist);
         assertTrue(LifecycleListener.prePersistWithEntity);
@@ -260,7 +260,7 @@ public class TestDatastore extends TestBase {
 
     @Test
     public void testMultipleDatabasesSingleThreaded() {
-        getMapper().map(List.of(FacebookUser.class));
+        getMapper().map(java.util.Collections.singletonList(FacebookUser.class));
 
         final Datastore ds1 = Morphia.createDatastore(getMongoClient(), "db1");
         final Datastore ds2 = Morphia.createDatastore(getMongoClient(), "db2");

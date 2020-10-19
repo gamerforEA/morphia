@@ -8,20 +8,7 @@ import dev.morphia.aggregation.experimental.expressions.AccumulatorExpressions;
 import dev.morphia.aggregation.experimental.expressions.ConditionalExpressions;
 import dev.morphia.aggregation.experimental.expressions.MathExpressions;
 import dev.morphia.aggregation.experimental.expressions.ObjectExpressions;
-import dev.morphia.aggregation.experimental.stages.AddFields;
-import dev.morphia.aggregation.experimental.stages.Bucket;
-import dev.morphia.aggregation.experimental.stages.CollectionStats;
-import dev.morphia.aggregation.experimental.stages.CurrentOp;
-import dev.morphia.aggregation.experimental.stages.GraphLookup;
-import dev.morphia.aggregation.experimental.stages.Match;
-import dev.morphia.aggregation.experimental.stages.Merge;
-import dev.morphia.aggregation.experimental.stages.Redact;
-import dev.morphia.aggregation.experimental.stages.ReplaceWith;
-import dev.morphia.aggregation.experimental.stages.Sample;
-import dev.morphia.aggregation.experimental.stages.Skip;
-import dev.morphia.aggregation.experimental.stages.SortByCount;
-import dev.morphia.aggregation.experimental.stages.Unset;
-import dev.morphia.aggregation.experimental.stages.Unwind;
+import dev.morphia.aggregation.experimental.stages.*;
 import dev.morphia.mapping.codec.DocumentWriter;
 import dev.morphia.test.TestBase;
 import org.bson.Document;
@@ -30,23 +17,18 @@ import org.bson.codecs.EncoderContext;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Collections;
 
 import static dev.morphia.aggregation.experimental.expressions.AccumulatorExpressions.push;
 import static dev.morphia.aggregation.experimental.expressions.AccumulatorExpressions.sum;
-import static dev.morphia.aggregation.experimental.expressions.ArrayExpressions.array;
-import static dev.morphia.aggregation.experimental.expressions.ArrayExpressions.elementAt;
-import static dev.morphia.aggregation.experimental.expressions.ArrayExpressions.size;
+import static dev.morphia.aggregation.experimental.expressions.ArrayExpressions.*;
 import static dev.morphia.aggregation.experimental.expressions.ComparisonExpressions.gt;
 import static dev.morphia.aggregation.experimental.expressions.ConditionalExpressions.condition;
 import static dev.morphia.aggregation.experimental.expressions.Expressions.field;
 import static dev.morphia.aggregation.experimental.expressions.Expressions.value;
 import static dev.morphia.aggregation.experimental.expressions.MathExpressions.add;
 import static dev.morphia.aggregation.experimental.expressions.SetExpressions.setIntersection;
-import static dev.morphia.aggregation.experimental.expressions.SystemVariables.DESCEND;
-import static dev.morphia.aggregation.experimental.expressions.SystemVariables.NOW;
-import static dev.morphia.aggregation.experimental.expressions.SystemVariables.PRUNE;
-import static dev.morphia.aggregation.experimental.expressions.SystemVariables.ROOT;
+import static dev.morphia.aggregation.experimental.expressions.SystemVariables.*;
 import static dev.morphia.aggregation.experimental.stages.GeoNear.to;
 import static dev.morphia.query.experimental.filters.Filters.eq;
 import static dev.morphia.query.experimental.filters.Filters.exists;
@@ -171,7 +153,7 @@ public class CodecStructureTest extends TestBase {
                        + "'insert' } }"),
             Merge.into("monthlytotals")
                  .on("_id")
-                 .whenMatched(List.of(
+                 .whenMatched(Collections.singletonList(
                      AddFields.of()
                               .field("thumbsup", add(field("thumbsup"), value("$$new.thumbsup")))
                               .field("thumbsdown", add(field("$thumbsdown"), value("$$new.thumbsdown")))))

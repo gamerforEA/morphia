@@ -150,8 +150,7 @@ public class DateExpressionTest extends ExpressionsTestBase {
 
     @Test
     public void testDateFromString() {
-        List<Document> list = List.of(
-            parse("{ _id: 1, date: '2017-02-08T12:10:40.787', timezone: 'America/New_York', message:  'Step 1: Started' }"),
+        List<Document> list = java.util.Arrays.asList(parse("{ _id: 1, date: '2017-02-08T12:10:40.787', timezone: 'America/New_York', message:  'Step 1: Started' }"),
             parse("{ _id: 2, date: '2017-02-08', timezone: '-05:00', message:  'Step 1: Ended' }"),
             parse("{ _id: 3, message:  ' Step 1: Ended ' }"),
             parse("{ _id: 4, date: '2017-02-09', timezone: 'Europe/London', message: 'Step 2: Started'}"),
@@ -166,8 +165,7 @@ public class DateExpressionTest extends ExpressionsTestBase {
                                                                          .timeZone("America/New_York")))
                                        .execute(Document.class)
                                        .toList();
-        assertEquals(List.of(
-            parse("{ '_id' : 1, 'date' : ISODate('2017-02-08T17:10:40.787Z') }"),
+        assertEquals(java.util.Arrays.asList(parse("{ '_id' : 1, 'date' : ISODate('2017-02-08T17:10:40.787Z') }"),
             parse("{ '_id' : 2, 'date' : ISODate('2017-02-08T05:00:00Z') }"),
             parse("{ '_id' : 3, 'date' : null }"),
             parse("{ '_id' : 4, 'date' : ISODate('2017-02-09T05:00:00Z') }"),
@@ -181,8 +179,7 @@ public class DateExpressionTest extends ExpressionsTestBase {
                         .execute(Document.class)
                         .toList();
 
-        assertEquals(List.of(
-            parse("{ '_id' : 1, 'date' : ISODate('2017-02-08T17:10:40.787Z') }"),
+        assertEquals(java.util.Arrays.asList(parse("{ '_id' : 1, 'date' : ISODate('2017-02-08T17:10:40.787Z') }"),
             parse("{ '_id' : 2, 'date' : ISODate('2017-02-08T05:00:00Z') }"),
             parse("{ '_id' : 3, 'date' : null }"),
             parse("{ '_id' : 4, 'date' : ISODate('2017-02-09T00:00:00Z') }"),
@@ -215,8 +212,7 @@ public class DateExpressionTest extends ExpressionsTestBase {
     public void testToDate() {
         checkMinServerVersion(4.0);
         getDatabase().getCollection("orders")
-                     .insertMany(List.of(
-                         parse(" { _id: 1, item: 'apple', qty: 5, order_date: '2018-03-10'}"),
+                     .insertMany(java.util.Arrays.asList(parse(" { _id: 1, item: 'apple', qty: 5, order_date: '2018-03-10'}"),
                          parse("{ _id: 2, item: 'pie', qty: 10,  order_date: '2018-03-12'}"),
                          parse("{ _id: 3, item: 'ice cream', qty: 2, price: '4.99', order_date: '2018-03-05' }"),
                          parse("{ _id: 4, item: 'almonds' ,  qty: 5, price: 5,  order_date: '2018-03-05 +10:00'}")));
@@ -229,8 +225,7 @@ public class DateExpressionTest extends ExpressionsTestBase {
                                           .execute(Document.class)
                                           .toList();
 
-        List<Document> documents = List.of(
-            parse("{'_id': 4, 'item': 'almonds', 'qty': 5, 'price': 5, 'order_date': '2018-03-05 +10:00', 'convertedDate': ISODate('2018-03-04T14:00:00Z')}"),
+        List<Document> documents = java.util.Arrays.asList(parse("{'_id': 4, 'item': 'almonds', 'qty': 5, 'price': 5, 'order_date': '2018-03-05 +10:00', 'convertedDate': ISODate('2018-03-04T14:00:00Z')}"),
             parse("{'_id': 3, 'item': 'ice cream', 'qty': 2, 'price': '4.99', 'order_date': '2018-03-05', 'convertedDate': ISODate('2018-03-05T00:00:00Z')}"),
             parse("{'_id': 1, 'item': 'apple', 'qty': 5, 'order_date': '2018-03-10', 'convertedDate': ISODate('2018-03-10T00:00:00Z')}"),
             parse("{'_id': 2, 'item': 'pie', 'qty': 10, 'order_date': '2018-03-12', 'convertedDate': ISODate('2018-03-12T00:00:00Z')}"));

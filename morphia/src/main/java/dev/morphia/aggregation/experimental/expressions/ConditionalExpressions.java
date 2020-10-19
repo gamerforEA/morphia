@@ -26,7 +26,7 @@ public class ConditionalExpressions {
      * @aggregation.expression $cond
      */
     public static Expression condition(final Expression condition, final Expression then, final Expression otherwise) {
-        return new Expression("$cond", List.of(condition, then, otherwise));
+        return new Expression("$cond", java.util.Arrays.asList(condition, then, otherwise));
     }
 
     /**

@@ -348,7 +348,7 @@ public class Mapper {
      * @return the MappedClass references
      */
     public List<MappedClass> map(final Class... entityClasses) {
-        return map(List.of(entityClasses), true);
+        return map(Arrays.asList(entityClasses), true);
     }
 
     /**
@@ -423,7 +423,7 @@ public class Mapper {
      */
     public <T> boolean isMappable(final Class<T> type) {
         final Class actual = MorphiaProxy.class.isAssignableFrom(type) ? type.getSuperclass() : type;
-        return hasAnnotation(actual, List.of(Entity.class, Embedded.class));
+        return hasAnnotation(actual, Arrays.asList(Entity.class, Embedded.class));
     }
 
     /**

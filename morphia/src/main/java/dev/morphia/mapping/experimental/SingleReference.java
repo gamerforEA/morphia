@@ -10,6 +10,7 @@ import dev.morphia.query.Query;
 import dev.morphia.sofia.Sofia;
 import org.bson.Document;
 
+import java.util.Collections;
 import java.util.List;
 
 import static dev.morphia.query.experimental.filters.Filters.eq;
@@ -110,7 +111,7 @@ public class SingleReference<T> extends MorphiaReference<T> {
 
     @Override
     public List<Object> getIds() {
-        return List.of(id);
+        return Collections.singletonList(id);
     }
 
     @Override

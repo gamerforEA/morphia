@@ -2,8 +2,6 @@ package dev.morphia.aggregation.experimental.expressions;
 
 import dev.morphia.aggregation.experimental.expressions.impls.Expression;
 
-import java.util.List;
-
 /**
  * Defines helper methods for the set expressions
  *
@@ -48,7 +46,7 @@ public final class SetExpressions {
      * @aggregation.expression $setDifference
      */
     public static Expression setDifference(final Expression first, final Expression second) {
-        return new Expression("$setDifference", List.of(first, second));
+        return new Expression("$setDifference", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -85,7 +83,7 @@ public final class SetExpressions {
      * @aggregation.expression $setIsSubset
      */
     public static Expression setIsSubset(final Expression first, final Expression second) {
-        return new Expression("$setIsSubset", List.of(first, second));
+        return new Expression("$setIsSubset", java.util.Arrays.asList(first, second));
     }
 
     /**

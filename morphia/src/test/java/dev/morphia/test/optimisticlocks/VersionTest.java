@@ -17,6 +17,7 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.Objects;
@@ -30,7 +31,7 @@ public class VersionTest extends TestBase {
     @Test
     public void testConcurrentModification() {
         Assertions.assertThrows(ConcurrentModificationException.class, () -> {
-            getMapper().map(List.of(VersionedType.class));
+            getMapper().map(Collections.singletonList(VersionedType.class));
 
             final VersionedType a = new VersionedType();
             assertEquals(0, a.version);
@@ -101,8 +102,8 @@ public class VersionTest extends TestBase {
 
     @Test
     public void testMultiSaves() {
-        getMapper().map(List.of(VersionedType.class));
-        List<VersionedType> initial = List.of(new VersionedType(), new VersionedType());
+        getMapper().map(Collections.singletonList(VersionedType.class));
+        List<VersionedType> initial = java.util.Arrays.asList(new VersionedType(), new VersionedType());
 
         getDs().save(initial);
 
@@ -126,7 +127,7 @@ public class VersionTest extends TestBase {
     @Test
     public void testUpdate() {
         Datastore ds = getDs();
-        List<VersionedType> initial = List.of(new VersionedType(), new VersionedType());
+        List<VersionedType> initial = java.util.Arrays.asList(new VersionedType(), new VersionedType());
         ds.save(initial);
 
         UpdateResult results = ds.find(VersionedType.class)

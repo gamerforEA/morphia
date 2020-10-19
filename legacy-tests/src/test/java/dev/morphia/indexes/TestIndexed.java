@@ -36,6 +36,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static dev.morphia.testutil.IndexMatcher.doesNotHaveIndexNamed;
@@ -154,7 +155,7 @@ public class TestIndexed extends TestBase {
 
     @Test(expected = MongoWriteException.class)
     public void testUniqueIndexedEntity() {
-        getMapper().map(List.of(UniqueIndexOnValue.class));
+        getMapper().map(Collections.singletonList(UniqueIndexOnValue.class));
         getDs().ensureIndexes();
         assertThat(getIndexInfo(UniqueIndexOnValue.class), hasIndexNamed("l_ascending"));
         getDs().save(new UniqueIndexOnValue("a"));
@@ -165,7 +166,7 @@ public class TestIndexed extends TestBase {
 
     @Test
     public void testDefaults() {
-        getMapper().map(List.of(NewIndexed.class));
+        getMapper().map(Collections.singletonList(NewIndexed.class));
         getDs().ensureIndexes();
     }
 

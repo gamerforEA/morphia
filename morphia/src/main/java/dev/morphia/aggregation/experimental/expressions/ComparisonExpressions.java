@@ -2,8 +2,6 @@ package dev.morphia.aggregation.experimental.expressions;
 
 import dev.morphia.aggregation.experimental.expressions.impls.Expression;
 
-import java.util.List;
-
 /**
  * Defines helper methods for the comparison expressions
  *
@@ -24,7 +22,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $cmp
      */
     public static Expression cmp(final Expression first, final Expression second) {
-        return new Expression("$cmp", List.of(first, second));
+        return new Expression("$cmp", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -39,7 +37,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $gt
      */
     public static Expression gt(final Expression first, final Expression second) {
-        return new Expression("$gt", List.of(first, second));
+        return new Expression("$gt", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -54,7 +52,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $gte
      */
     public static Expression gte(final Expression first, final Expression second) {
-        return new Expression("$gte", List.of(first, second));
+        return new Expression("$gte", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -69,7 +67,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $lte
      */
     public static Expression lte(final Expression first, final Expression second) {
-        return new Expression("$lte", List.of(first, second));
+        return new Expression("$lte", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -81,7 +79,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $eq
      */
     public static Expression eq(final Expression first, final Expression second) {
-        return new Expression("$eq", List.of(first, second));
+        return new Expression("$eq", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -93,7 +91,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $lt
      */
     public static Expression lt(final Expression first, final Expression second) {
-        return new Expression("$lt", List.of(first, second));
+        return new Expression("$lt", java.util.Arrays.asList(first, second));
     }
 
     /**
@@ -105,7 +103,7 @@ public final class ComparisonExpressions {
      * @aggregation.expression $ne
      */
     public static Expression ne(final Expression first, final Expression second) {
-        return new Expression("$ne", List.of(first, second));
+        return new Expression("$ne", java.util.Arrays.asList(first, second));
     }
 
 }

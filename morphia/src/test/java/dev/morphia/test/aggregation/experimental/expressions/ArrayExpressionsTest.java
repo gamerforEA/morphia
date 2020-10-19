@@ -38,8 +38,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
 
     @Test
     public void testArrayToObject() {
-        getDatabase().getCollection("inventory").insertMany(List.of(
-            parse("{'_id' : 1, 'item' : 'ABC1', dimensions: [{'k': 'l', 'v': 25} , {'k': 'w', 'v': 10}, {'k': 'uom', 'v': 'cm'}]}"),
+        getDatabase().getCollection("inventory").insertMany(java.util.Arrays.asList(parse("{'_id' : 1, 'item' : 'ABC1', dimensions: [{'k': 'l', 'v': 25} , {'k': 'w', 'v': 10}, {'k': 'uom', 'v': 'cm'}]}"),
             parse("{'_id' : 2, 'item' : 'ABC2', dimensions: [['l', 50], ['w', 25], ['uom', 'cm']]}"),
             parse("{'_id' : 3, 'item' : 'ABC3', dimensions: [['l', 25], ['l', 'cm'], ['l', 50]]}")));
 
@@ -50,7 +49,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(parse("{ '_id' : 1, 'item' : 'ABC1', 'dimensions' : { 'l' : 25, 'w' : 10, 'uom' : 'cm' } }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'ABC1', 'dimensions' : { 'l' : 25, 'w' : 10, 'uom' : 'cm' } }"),
             parse("{ '_id' : 2, 'item' : 'ABC2', 'dimensions' : { 'l' : 50, 'w' : 25, 'uom' : 'cm' } }"),
             parse("{ '_id' : 3, 'item' : 'ABC3', 'dimensions' : { 'l' : 50 } }"));
 
@@ -60,7 +59,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testConcatArrays() {
         assertAndCheckDocShape("{$concatArrays: [['hello', ' '], ['world']]}",
-            concatArrays(array(value("hello"), value(" ")), array(value("world"))), List.of("hello", " ", "world"));
+            concatArrays(array(value("hello"), value(" ")), array(value("world"))), java.util.Arrays.asList("hello", " ", "world"));
     }
 
     @Test
@@ -78,7 +77,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                     gte(value("$$num"), value(-9223372036854775807L)),
                     lte(value("$$num"), value(9223372036854775807L))))
                 .as("num"),
-            List.of(1, 2, 3.1, 4L));
+            java.util.Arrays.asList(1, 2, 3.1, 4L));
     }
 
     @Test
@@ -100,8 +99,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testMap() {
         getDatabase().getCollection("grades").insertMany(
-            List.of(
-                parse("{ _id: 1, quizzes: [ 5, 6, 7 ] }"),
+            java.util.Arrays.asList(parse("{ _id: 1, quizzes: [ 5, 6, 7 ] }"),
                 parse("{ _id: 2, quizzes: [ ] }"),
                 parse("{ _id: 3, quizzes: [ 3, 8, 9 ] }")));
 
@@ -113,8 +111,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 1, 'adjustedGrades' : [ 7, 8, 9 ] }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'adjustedGrades' : [ 7, 8, 9 ] }"),
             parse("{ '_id' : 2, 'adjustedGrades' : [ ] }"),
             parse("{ '_id' : 3, 'adjustedGrades' : [ 5, 10, 11 ] }"));
 
@@ -127,12 +124,12 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
             objectToArray(Expressions.of()
                                      .field("item", value("foo"))
                                      .field("qty", value(25))),
-            List.of(parse("{ 'k' : 'item', 'v' : 'foo' }"), parse("{ 'k' : 'qty', 'v' : 25 }")));
+            java.util.Arrays.asList(parse("{ 'k' : 'item', 'v' : 'foo' }"), parse("{ 'k' : 'qty', 'v' : 25 }")));
     }
 
     @Test
     public void testRange() {
-        assertAndCheckDocShape("{ $range: [ 0, 10, 2 ] }", range(0, 10).step(2), List.of(0, 2, 4, 6, 8));
+        assertAndCheckDocShape("{ $range: [ 0, 10, 2 ] }", range(0, 10).step(2), java.util.Arrays.asList(0, 2, 4, 6, 8));
     }
 
     @Test
@@ -147,7 +144,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
         MongoCollection<Document> users = getDatabase().getCollection("users");
         users.drop();
         users.insertMany(
-            List.of(parse("{ '_id' : 1, 'name' : 'dave123', 'favorites' : [ 'chocolate', 'cake', 'butter', 'apples' ] }"),
+            java.util.Arrays.asList(parse("{ '_id' : 1, 'name' : 'dave123', 'favorites' : [ 'chocolate', 'cake', 'butter', 'apples' ] }"),
                 parse("{ '_id' : 2, 'name' : 'li', 'favorites' : [ 'apples', 'pudding', 'pie' ] }"),
                 parse("{ '_id' : 3, 'name' : 'ahn', 'favorites' : [ ] }"),
                 parse("{ '_id' : 4, 'name' : 'ty' }")));
@@ -159,8 +156,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 1, 'name' : 'dave123', 'reverseFavorites' : [ 'apples', 'butter', 'cake', 'chocolate' ] }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'name' : 'dave123', 'reverseFavorites' : [ 'apples', 'butter', 'cake', 'chocolate' ] }"),
             parse("{ '_id' : 2, 'name' : 'li', 'reverseFavorites' : [ 'pie', 'pudding', 'apples' ] }"),
             parse("{ '_id' : 3, 'name' : 'ahn', 'reverseFavorites' : [ ] }"),
             parse("{ '_id' : 4, 'name' : 'ty', 'reverseFavorites' : null }"));
@@ -170,8 +166,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
 
     @Test
     public void testSize() {
-        getDatabase().getCollection("inventory").insertMany(List.of(
-            parse("{ '_id' : 1, 'item' : 'ABC1', 'description' : 'product 1', colors: [ 'blue', 'black', 'red' ] }"),
+        getDatabase().getCollection("inventory").insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'ABC1', 'description' : 'product 1', colors: [ 'blue', 'black', 'red' ] }"),
             parse("{ '_id' : 2, 'item' : 'ABC2', 'description' : 'product 2', colors: [ 'purple' ] }"),
             parse("{ '_id' : 3, 'item' : 'XYZ1', 'description' : 'product 3', colors: [ ] }"),
             parse("{ '_id' : 4, 'item' : 'ZZZ1', 'description' : 'product 4 - missing colors' }"),
@@ -185,8 +180,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ '_id' : 1, 'item' : 'ABC1', 'numberOfColors' : 3 }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'item' : 'ABC1', 'numberOfColors' : 3 }"),
             parse("{ '_id' : 2, 'item' : 'ABC2', 'numberOfColors' : 1 }"),
             parse("{ '_id' : 3, 'item' : 'XYZ1', 'numberOfColors' : 0 }"),
             parse("{ '_id' : 4, 'item' : 'ZZZ1', 'numberOfColors' : 'NA' }"),
@@ -197,8 +191,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
 
     @Test
     public void testSlice() {
-        getDatabase().getCollection("users").insertMany(List.of(
-            parse("{ '_id' : 1, 'name' : 'dave123', favorites: [ 'chocolate', 'cake', 'butter', 'apples' ] }"),
+        getDatabase().getCollection("users").insertMany(java.util.Arrays.asList(parse("{ '_id' : 1, 'name' : 'dave123', favorites: [ 'chocolate', 'cake', 'butter', 'apples' ] }"),
             parse("{ '_id' : 2, 'name' : 'li', favorites: [ 'apples', 'pudding', 'pie' ] }"),
             parse("{ '_id' : 3, 'name' : 'ahn', favorites: [ 'pears', 'pecans', 'chocolate', 'cherries' ] }"),
             parse("{ '_id' : 4, 'name' : 'ty', favorites: [ 'ice cream' ] }")));
@@ -209,7 +202,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                                           .include("threeFavorites", slice(field("favorites"), 3)))
                                        .execute(Document.class)
                                        .toList();
-        List<Document> expected = List.of(parse("{ '_id' : 1, 'name' : 'dave123', 'threeFavorites' : [ 'chocolate', 'cake', 'butter' ] }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ '_id' : 1, 'name' : 'dave123', 'threeFavorites' : [ 'chocolate', 'cake', 'butter' ] }"),
             parse("{ '_id' : 2, 'name' : 'li', 'threeFavorites' : [ 'apples', 'pudding', 'pie' ] }"),
             parse("{ '_id' : 3, 'name' : 'ahn', 'threeFavorites' : [ 'pears', 'pecans', 'chocolate' ] }"),
             parse("{ '_id' : 4, 'name' : 'ty', 'threeFavorites' : [ 'ice cream' ] }"));
@@ -219,8 +212,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
 
     @Test
     public void testZip() {
-        getDatabase().getCollection("matrices").insertMany(List.of(
-            parse("{ matrix: [[1, 2], [2, 3], [3, 4]] }"),
+        getDatabase().getCollection("matrices").insertMany(java.util.Arrays.asList(parse("{ matrix: [[1, 2], [2, 3], [3, 4]] }"),
             parse("{ matrix: [[8, 7], [7, 6], [5, 4]] }")));
 
         List<Document> actual = getDs().aggregate("matrices")
@@ -233,8 +225,7 @@ public class ArrayExpressionsTest extends ExpressionsTestBase {
                                        .execute(Document.class)
                                        .toList();
 
-        List<Document> expected = List.of(
-            parse("{ 'transposed' : [ [ 1, 2, 3 ], [ 2, 3, 4 ] ] }"),
+        List<Document> expected = java.util.Arrays.asList(parse("{ 'transposed' : [ [ 1, 2, 3 ], [ 2, 3, 4 ] ] }"),
             parse("{ 'transposed' : [ [ 8, 7, 5 ], [ 7, 6, 4 ] ] }"));
 
         assertDocumentEquals(expected, actual);

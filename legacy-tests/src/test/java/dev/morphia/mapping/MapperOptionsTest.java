@@ -16,11 +16,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static dev.morphia.query.experimental.filters.Filters.ne;
 
@@ -173,7 +169,7 @@ public class MapperOptionsTest extends TestBase {
         EntityDiscriminator2 entityDiscriminator2 = new EntityDiscriminator2();
         entityDiscriminator2.name = "entityDiscriminator2";
 
-        getDs().save(List.of(entityDiscriminator, entityDiscriminator2));
+        getDs().save(Arrays.asList(entityDiscriminator, entityDiscriminator2));
 
         Query<EntityDiscriminator2> query = getDs().find(EntityDiscriminator2.class)
                                                    .filter(ne("name", "hi"));
