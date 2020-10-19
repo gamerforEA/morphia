@@ -20,7 +20,7 @@ import static java.lang.String.format;
  * @deprecated use {@link Filters} and {@link Filter} references instead
  */
 @SuppressWarnings("DeprecatedIsStillUsed")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public enum FilterOperator {
 
     WITHIN_CIRCLE("$center") {

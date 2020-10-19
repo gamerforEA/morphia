@@ -7,7 +7,7 @@ import java.util.List;
  * @deprecated use the driver-provided types instead
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface Geometry {
     /**
      * Returns a list of coordinates for this Geometry type.  For something like a Point, this will be a pair of lat/long coordinates, but

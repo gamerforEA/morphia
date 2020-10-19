@@ -15,7 +15,7 @@ import java.util.List;
  * @deprecated updates should be performed using the {@link Query#update(UpdateOperator, UpdateOperator...)} instead
  * of this class directly
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface UpdateOperations<T> {
 
     /**

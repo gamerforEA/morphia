@@ -23,7 +23,7 @@ import static java.lang.String.format;
  * @deprecated use the driver-provided types instead
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public final class NamedCoordinateReferenceSystem extends CoordinateReferenceSystem {
 
     /**

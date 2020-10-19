@@ -301,7 +301,7 @@ public class Mapper {
      * @param <T>    the type of the entity
      * @return the Key
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public <T> Key<T> getKey(final T entity) {
         if (entity instanceof Key) {
             return (Key<T>) entity;
@@ -320,7 +320,7 @@ public class Mapper {
      * @param <T>        the type of the entity
      * @return the Key
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public <T> Key<T> getKey(final T entity, final String collection) {
         if (entity instanceof Key) {
             return (Key<T>) entity;
@@ -372,7 +372,7 @@ public class Mapper {
      * @deprecated no longer used
      */
     @SuppressWarnings("unused")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public void setOptions(final MapperOptions options) {
     }
 
@@ -557,7 +557,7 @@ public class Mapper {
      * @param key the Key to update
      * @return the collection name on the Key
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public String updateCollection(final Key key) {
         if (key.getCollection() == null && key.getType() == null) {
             throw new IllegalStateException("Key is invalid! " + key);

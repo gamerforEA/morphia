@@ -37,7 +37,7 @@ public @interface Embedded {
      * @return unused
      * @deprecated
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     String value() default Mapper.IGNORED_FIELDNAME;
 
     /**

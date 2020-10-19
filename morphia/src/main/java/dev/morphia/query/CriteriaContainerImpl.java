@@ -20,7 +20,7 @@ import static dev.morphia.query.CriteriaJoin.AND;
  * @see CriteriaJoin
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class CriteriaContainerImpl extends AbstractCriteria implements CriteriaContainer {
     private final Mapper mapper;
     private final MappedClass mappedClass;

@@ -26,7 +26,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @param criteria the clauses to 'and' together
      * @return the container
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default CriteriaContainer and(final Criteria... criteria) {
         return legacyOperation();
     }
@@ -37,7 +37,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @param field the field
      * @return the FieldEnd to define the criteria
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default FieldEnd<? extends CriteriaContainer> criteria(final String field) {
         return legacyOperation();
     }
@@ -75,7 +75,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @return a MorphiaCursor
      * @see #iterator()
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default MorphiaCursor<T> execute() {
         return legacyOperation();
     }
@@ -108,7 +108,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @param options the options to apply to the find operation
      * @return a MorphiaCursor
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default MorphiaCursor<T> execute(FindOptions options) {
         return legacyOperation();
     }
@@ -123,7 +123,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @since 1.4
      * @deprecated use {@link #iterator()}
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default MorphiaCursor<T> find() {
         return iterator();
     }
@@ -156,7 +156,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @param name the field
      * @return the FieldEnd to define the criteria
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default FieldEnd<? extends Query<T>> field(final String name) {
         return legacyOperation();
     }
@@ -191,7 +191,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @return this
      * @deprecated use {@link #filter(Filter...)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Query<T> filter(final String condition, final Object value) {
         return legacyOperation();
     }
@@ -223,7 +223,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @since 1.4
      * @deprecated use {@link #iterator(FindOptions)}
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default MorphiaCursor<T> find(FindOptions options) {
         return iterator(options);
     }
@@ -293,7 +293,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @return the keys of the documents returned by this query
      * @deprecated use a project to retrieve only the ID values
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     MorphiaKeyCursor<T> keys();
 
     /**
@@ -303,7 +303,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @return the keys of the documents returned by this query
      * @since 1.4
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     MorphiaKeyCursor<T> keys(FindOptions options);
 
     /**
@@ -312,7 +312,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @param criteria the clauses to 'or' together
      * @return the container
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default CriteriaContainer or(final Criteria... criteria) {
         return legacyOperation();
     }
@@ -326,7 +326,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @since 2.0
      * @deprecated
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Modify<T> modify(final UpdateOperations<T> operations) {
         return legacyOperation();
     }
@@ -337,7 +337,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @return this
      * @deprecated use {@link FindOptions#projection()}
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Query<T> retrieveKnownFields() {
         return legacyOperation();
     }
@@ -350,7 +350,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @mongodb.driver.manual reference/operator/query/text/ $text
      * @deprecated use {@link dev.morphia.query.experimental.filters.Filters#text(String)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     Query<T> search(String text);
 
     /**
@@ -362,7 +362,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @mongodb.driver.manual reference/operator/query/text/ $text
      * @deprecated use {@link dev.morphia.query.experimental.filters.Filters#text(String)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     Query<T> search(String text, String language);
 
     /**
@@ -387,7 +387,7 @@ public interface Query<T> extends CriteriaContainer, Iterable<T> {
      * @since 2.0
      * @deprecated
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Update<T> update(final UpdateOperations<T> operations) {
         return legacyOperation();
     }

@@ -9,7 +9,7 @@ import com.mongodb.client.model.geojson.Point;
  *
  * @see dev.morphia.query.experimental.filters.Filters
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class Shape {
     private final String geometry;
     private final Point[] points;

@@ -16,7 +16,7 @@ import java.util.Map;
  * @param <T> the type to update
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class UpdateOpsImpl<T> extends UpdateBase<T> implements UpdateOperations<T> {
     private Document ops = new Document();
     private boolean validateNames = true;

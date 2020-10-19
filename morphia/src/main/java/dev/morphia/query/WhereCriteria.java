@@ -7,7 +7,7 @@ import org.bson.Document;
  * Creates a Criteria for a $where clause.
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class WhereCriteria extends AbstractCriteria {
 
     private final Object js;

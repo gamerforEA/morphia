@@ -13,7 +13,7 @@ import java.util.Map;
  * @morphia.internal
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 class FieldCriteria extends AbstractCriteria {
     private final String field;
     private final FilterOperator operator;

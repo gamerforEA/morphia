@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public @interface NotSaved {
 
 }

@@ -19,7 +19,7 @@ import java.util.List;
  * @deprecated use {@link dev.morphia.aggregation.experimental.Aggregation} instead
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface AggregationPipeline {
 
     /**

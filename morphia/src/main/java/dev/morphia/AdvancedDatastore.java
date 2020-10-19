@@ -19,7 +19,7 @@ import java.util.List;
  * @deprecated
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface AdvancedDatastore extends Datastore {
 
     /**
@@ -30,7 +30,7 @@ public interface AdvancedDatastore extends Datastore {
      * @return the aggregation pipeline
      * @deprecated
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     AggregationPipeline createAggregation(String collection, Class<?> clazz);
 
     /**
@@ -39,7 +39,7 @@ public interface AdvancedDatastore extends Datastore {
      * @param q    the query which will be passed to a {@link dev.morphia.query.QueryFactory}
      * @return Query for the specified class type
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> Query<T> createQuery(Class<T> type, Document q) {
         return getQueryFactory().createQuery(this, type, q);
     }
@@ -53,7 +53,7 @@ public interface AdvancedDatastore extends Datastore {
      * @param <V>   The type of the ID value
      * @return the DBRef for the entity
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T, V> DBRef createRef(Class<T> clazz, V id) {
         if (id == null) {
             throw new MappingException("Could not get id for " + clazz.getName());
@@ -68,7 +68,7 @@ public interface AdvancedDatastore extends Datastore {
      * @param entity the entity to create a DBRef for
      * @return the DBRef for the entity
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> DBRef createRef(T entity)  {
         final Object id = getMapper().getId(entity);
         if (id == null) {
@@ -87,7 +87,7 @@ public interface AdvancedDatastore extends Datastore {
      * @deprecated use {@link Query#update(UpdateOperator, UpdateOperator...)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> UpdateOperations<T> createUpdateOperations(Class<T> type, DBObject ops) {
         final UpdateOpsImpl<T> upOps = (UpdateOpsImpl<T>) createUpdateOperations(type);
         upOps.setOps(new Document(ops.toMap()));
@@ -105,7 +105,7 @@ public interface AdvancedDatastore extends Datastore {
      * @morphia.inline
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> void insert(T entity, InsertOptions options) {
         insert(entity, options.toInsertOneOptions());
     }
@@ -121,7 +121,7 @@ public interface AdvancedDatastore extends Datastore {
      * @deprecated use {@link #insert(List, InsertManyOptions)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> void insert(List<T> entities, InsertOptions options) {
         insert(entities, options.toInsertManyOptions());
     }
@@ -134,6 +134,6 @@ public interface AdvancedDatastore extends Datastore {
      * @param <T>        the type of the entity
      * @return the query
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     <T> Query<T> queryByExample(String collection, T example);
 }

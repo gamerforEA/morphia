@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Roman Lapin
  * @deprecated use {@link dev.morphia.aggregation.experimental.stages.AutoBucket} instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class BucketAutoOptions {
 
     private Granularity granularity;

@@ -27,7 +27,7 @@ import java.util.List;
  * @deprecated
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class AggregationPipelineImpl implements AggregationPipeline {
     private static final Logger LOG = LoggerFactory.getLogger(AggregationPipelineImpl.class);
 

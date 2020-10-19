@@ -287,7 +287,7 @@ public class MapperOptions {
          * @return this
          * @deprecated use {@link #dateStorage(DateStorage)} instead.
          */
-        @Deprecated(forRemoval = true)
+        @Deprecated
         public Builder dateForm(DateStorage dateStorage) {
             return dateStorage(dateStorage);
         }
@@ -407,7 +407,7 @@ public class MapperOptions {
          * @return this
          * @deprecated use {@link #collectionNaming(NamingStrategy)} instead
          */
-        @Deprecated(since = "2.0", forRemoval = true)
+        @Deprecated
         public Builder useLowerCaseCollectionNames(boolean useLowerCaseCollectionNames) {
             if (useLowerCaseCollectionNames) {
                 collectionNaming(NamingStrategy.lowerCase());

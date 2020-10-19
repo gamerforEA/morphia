@@ -8,7 +8,7 @@ package dev.morphia.geo;
  * the database that there's not enough information for Morphia to automatically create Geometry instances.
  * @deprecated use the driver-provided types instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class NamedCoordinateReferenceSystemConverter {
 /*
     public Object decode(final Class<?> targetClass, final Object fromDocument, final MappedField optionalExtraInfo) {

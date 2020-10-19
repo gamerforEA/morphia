@@ -139,7 +139,7 @@ public class LegacyQuery<T> implements CriteriaContainer, Query<T> {
      * @see #iterator(FindOptions)
      */
     @Override
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public MorphiaCursor<T> execute() {
         return iterator();
     }
@@ -201,7 +201,7 @@ public class LegacyQuery<T> implements CriteriaContainer, Query<T> {
      * @return a MorphiaCursor
      */
     @Override
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public MorphiaCursor<T> execute(final FindOptions options) {
         return iterator(options);
     }
@@ -316,7 +316,7 @@ public class LegacyQuery<T> implements CriteriaContainer, Query<T> {
     }
 
     @Override
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public Update<T> update(final UpdateOperations<T> operations) {
         return new Update<>(datastore, mapper, getCollection(), this, clazz, (UpdateOpsImpl<T>) operations);
     }

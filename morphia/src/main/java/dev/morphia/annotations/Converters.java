@@ -33,7 +33,7 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public @interface Converters {
     /**
      * @return The Converters to apply to a field.

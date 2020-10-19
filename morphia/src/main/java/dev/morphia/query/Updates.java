@@ -164,7 +164,7 @@ public interface Updates<Updater extends Updates> {
      * @mongodb.driver.manual reference/operator/update/pull/ $pull
      * @deprecated use {@link #pull(String, Object)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Updater removeAll(String field, Object value) {
         return pull(field, value);
     }
@@ -188,7 +188,7 @@ public interface Updates<Updater extends Updates> {
      * @mongodb.driver.manual reference/operator/update/pullAll/ $pullAll
      * @deprecated use {@link #pullAll(String, List)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default Updater removeAll(String field, List<?> values) {
         return pullAll(field, values);
     }

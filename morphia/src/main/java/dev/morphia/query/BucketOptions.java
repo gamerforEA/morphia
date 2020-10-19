@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Roman Lapin
  * @deprecated use {@link dev.morphia.aggregation.experimental.stages.Bucket} instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class BucketOptions {
 
     private Object defaultField;

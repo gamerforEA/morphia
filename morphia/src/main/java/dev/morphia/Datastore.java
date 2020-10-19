@@ -63,7 +63,7 @@ public interface Datastore {
      * @deprecated use {@link #aggregate(Class)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     dev.morphia.aggregation.AggregationPipeline createAggregation(Class<?> source);
 
     /**
@@ -74,7 +74,7 @@ public interface Datastore {
      * @return the query
      * @deprecated use {@link #find(Class)}
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> Query<T> createQuery(Class<T> type) {
         return find(type);
     }
@@ -88,7 +88,7 @@ public interface Datastore {
      * @deprecated use {@link Query#update(UpdateOperator, UpdateOperator...)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> dev.morphia.query.UpdateOperations<T> createUpdateOperations(Class<T> clazz) {
         return new dev.morphia.query.UpdateOpsImpl<>(this, clazz, getMapper());
     }
@@ -101,7 +101,7 @@ public interface Datastore {
      * @return results of the delete
      * @deprecated use {@link Query#delete()} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> DeleteResult delete(Query<T> query) {
         return query.delete(new DeleteOptions());
     }
@@ -116,7 +116,7 @@ public interface Datastore {
      * @since 1.3
      * @deprecated use {@link Query#delete(DeleteOptions)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> DeleteResult delete(Query<T> query, DeleteOptions options) {
         return query.delete(options);
     }
@@ -211,7 +211,7 @@ public interface Datastore {
      * @return the deleted Entity
      * @deprecated use {@link Query#findAndDelete()} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> T findAndDelete(Query<T> query) {
         return query.findAndDelete();
     }
@@ -227,7 +227,7 @@ public interface Datastore {
      * @deprecated use {@link Query#findAndDelete(FindAndDeleteOptions)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> T findAndDelete(Query<T> query, FindAndModifyOptions options) {
         return query.findAndDelete(new FindAndDeleteOptions()
                                        .writeConcern(options.getWriteConcern())
@@ -248,7 +248,7 @@ public interface Datastore {
      * @deprecated use {@link Query#modify(UpdateOperations)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> T findAndModify(Query<T> query, dev.morphia.query.UpdateOperations<T> operations, FindAndModifyOptions options) {
         return query.modify(operations).execute(options);
     }
@@ -263,7 +263,7 @@ public interface Datastore {
      * @deprecated use {@link Query#modify(UpdateOperations)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> T findAndModify(Query<T> query, dev.morphia.query.UpdateOperations<T> operations) {
         return query.modify(operations).execute(new ModifyOptions()
                                                     .returnDocument(ReturnDocument.AFTER));
@@ -393,7 +393,7 @@ public interface Datastore {
      * @param wc     the WriteConcern to use
      * @deprecated use {@link #merge(Object, InsertOneOptions)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> void merge(T entity, WriteConcern wc) {
         merge(entity, new InsertOneOptions().writeConcern(wc));
     }
@@ -426,7 +426,7 @@ public interface Datastore {
      * @return the list of updated entities
      * @deprecated use {@link #save(List)} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> List<T> save(Iterable<T> entities) {
         List<T> list = new ArrayList<>();
         entities.forEach(list::add);
@@ -465,7 +465,7 @@ public interface Datastore {
      * @deprecated use {@link #save(List, InsertManyOptions)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> List<T> save(Iterable<T> entities, InsertOptions options) {
         List<T> list = new ArrayList<>();
         entities.forEach(list::add);
@@ -493,7 +493,7 @@ public interface Datastore {
      * @deprecated use {@link #save(Object, InsertOneOptions)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> T save(T entity, InsertOptions options) {
         return save(entity, options.toInsertOneOptions());
     }
@@ -539,7 +539,7 @@ public interface Datastore {
      * @deprecated use {@link Query#update(UpdateOperator, UpdateOperator...)} instead
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> UpdateResult update(Query<T> query, dev.morphia.query.UpdateOperations<T> operations, UpdateOptions options) {
         return query.update(operations).execute(options);
     }
@@ -555,7 +555,7 @@ public interface Datastore {
      * to single-document updates.
      */
     @SuppressWarnings("removal")
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default <T> UpdateResult update(Query<T> query, dev.morphia.query.UpdateOperations<T> operations) {
         return query.update(operations).execute(new UpdateOptions()
                                                     .upsert(false)

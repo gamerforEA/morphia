@@ -12,7 +12,7 @@ import static dev.morphia.query.MorphiaQuery.legacyOperation;
  * @morphia.internal
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface Criteria {
     /**
      * Used to add this Criteria to a CriteriaContainer

@@ -10,7 +10,7 @@ package dev.morphia.geo;
  * @deprecated use the driver-provided types instead
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class PointBuilder {
     private double longitude;
     private double latitude;

@@ -98,7 +98,7 @@ public class InsertManyOptions implements SessionConfigurable<InsertManyOptions>
     }
 
     @Override
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public WriteConcern getWriteConcern() {
         return writeConcern;
     }

@@ -25,7 +25,7 @@ import dev.morphia.query.Query;
  * @mongodb.driver.manual reference/operator/aggregation/geoNear/ geoNear
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public final class GeoNear {
     private final double[] nearLegacy;
     private final com.mongodb.client.model.geojson.Geometry nearGeoJson;
@@ -169,7 +169,7 @@ public final class GeoNear {
     /**
      * Provides a builder for GeoNear instances.
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public static class GeoNearBuilder {
         private final String distanceField;
         private Long limit;
@@ -280,7 +280,7 @@ public final class GeoNear {
          * @return this
          * @deprecated use the driver-provided types instead
          */
-        @Deprecated(since = "2.0", forRemoval = true)
+        @Deprecated
         public GeoNearBuilder setNear(final Point point) {
             return setNear(point.convert());
         }

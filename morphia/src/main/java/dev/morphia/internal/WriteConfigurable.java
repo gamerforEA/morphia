@@ -10,7 +10,7 @@ public interface WriteConfigurable<T> {
      * @return the write concern, or null if the default will be used.
      * @deprecated use {@link #writeConcern()} instead
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     default WriteConcern getWriteConcern() {
         return writeConcern();
     }

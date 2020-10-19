@@ -11,7 +11,7 @@ import static java.util.Arrays.asList;
  * @aggregation.expression $group
  * @deprecated use {@link dev.morphia.aggregation.experimental.stages.Group} instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public final class Group {
     private final String name;
     private Group nested;

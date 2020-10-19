@@ -24,7 +24,7 @@ import com.mongodb.WriteConcern;
  * @since 1.3
  * @deprecated use {@link dev.morphia.InsertOneOptions} or {@link dev.morphia.InsertManyOptions} instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public class InsertOptions {
     private WriteConcern writeConcern;
     private boolean ordered = true;

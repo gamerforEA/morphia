@@ -8,7 +8,7 @@ import static dev.morphia.query.MorphiaQuery.legacyOperation;
  * @deprecated
  */
 @SuppressWarnings("removal")
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public interface CriteriaContainer extends Criteria {
     /**
      * Adds Criteria to this container

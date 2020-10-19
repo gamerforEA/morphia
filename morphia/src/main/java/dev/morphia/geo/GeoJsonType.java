@@ -7,7 +7,7 @@ import java.util.List;
  * @deprecated use the driver defined types
  */
 @SuppressWarnings({"unchecked", "removal"}) // can't know, or define generics for, the Lists in the factory
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public enum GeoJsonType implements GeometryFactory {
     POINT("Point", Point.class) {
         @Override

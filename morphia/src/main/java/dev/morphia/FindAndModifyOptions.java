@@ -24,7 +24,7 @@ import com.mongodb.client.model.ReturnDocument;
  * @since 1.3
  * @deprecated use {@link ModifyOptions} instead
  */
-@Deprecated(since = "2.0", forRemoval = true)
+@Deprecated
 public final class FindAndModifyOptions extends ModifyOptions {
     /**
      * Sets the returnNew
@@ -32,7 +32,7 @@ public final class FindAndModifyOptions extends ModifyOptions {
      * @param returnNew the returnNew
      * @return this
      */
-    @Deprecated(since = "2.0", forRemoval = true)
+    @Deprecated
     public FindAndModifyOptions returnNew(final boolean returnNew) {
         returnDocument(returnNew ? ReturnDocument.AFTER : ReturnDocument.BEFORE);
         return this;
