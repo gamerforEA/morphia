@@ -157,7 +157,7 @@ public class EntityModelBuilder<T> {
     public FieldModelBuilder<?> fieldModelByFieldName(final String name) throws NoSuchElementException {
         return fieldModels.stream().filter(f -> f.getField().getName().equals(name))
                           .findFirst()
-                          .orElseThrow();
+                          .orElseThrow(NoSuchElementException::new);
     }
 
     /**

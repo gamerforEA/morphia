@@ -145,9 +145,9 @@ public class ZipCodeDataSetTest extends TestBase {
 
     private void validate(final MorphiaCursor<Population> cursor, final String state, final long value) {
         boolean found = false;
-        try (cursor) {
-            while (cursor.hasNext()) {
-                Population population = cursor.next();
+        try (final MorphiaCursor<Population> c = cursor) {
+            while (c.hasNext()) {
+                Population population = c.next();
 
                 if (population.getState().equals(state)) {
                     found = true;

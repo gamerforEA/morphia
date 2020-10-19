@@ -5,21 +5,12 @@ import org.bson.types.Decimal128;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
 import static dev.morphia.aggregation.experimental.expressions.Expressions.value;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.convert;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toBool;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toDate;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toDecimal;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toDouble;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toInt;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toLong;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.toObjectId;
-import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.type;
+import static dev.morphia.aggregation.experimental.expressions.TypeExpressions.*;
 
 public class TypeExpressionsTest extends ExpressionsTestBase {
 
@@ -38,8 +29,8 @@ public class TypeExpressionsTest extends ExpressionsTestBase {
     @Test
     public void testToDate() {
         checkMinServerVersion(4.0);
-        Date date = new Date(LocalDate.of(2018, 3, 3)
-                                      .toEpochSecond(LocalTime.MIDNIGHT, ZoneOffset.UTC) * 1000);
+        Date date = new Date(LocalDateTime.of(2018, 3, 3, 0, 0)
+                                          .toEpochSecond(ZoneOffset.UTC) * 1000);
         assertAndCheckDocShape("{$toDate: '2018-03-03' }", toDate(value("2018-03-03")), date);
     }
 

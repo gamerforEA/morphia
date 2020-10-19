@@ -68,10 +68,10 @@ public class MorphiaCodecProvider implements CodecProvider {
         return new MorphiaCodec<T>(datastore, mappedClass, propertyCodecProviders, mapper.getDiscriminatorLookup(), registry) {
             @Override
             protected EntityDecoder<T> getDecoder() {
-                return new EntityDecoder<>(this) {
+                return new EntityDecoder<T>(this) {
                     @Override
                     protected MorphiaInstanceCreator<T> getInstanceCreator(final EntityModel<T> classModel) {
-                        return new MorphiaInstanceCreator<>() {
+                        return new MorphiaInstanceCreator<T>() {
                             @Override
                             public T getInstance() {
                                 return entity;

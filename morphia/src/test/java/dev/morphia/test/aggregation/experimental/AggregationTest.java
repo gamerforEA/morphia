@@ -550,7 +550,7 @@ public class AggregationTest extends TestBase {
 
     @Test
     public void testProjection() {
-        var doc = parse("{'_id' : 1, title: 'abc123', isbn: '0001122223334', author: { last: 'zzz', first: 'aaa' }, copies: 5,\n"
+        Document doc = parse("{'_id' : 1, title: 'abc123', isbn: '0001122223334', author: { last: 'zzz', first: 'aaa' }, copies: 5,\n"
                         + "  lastModified: '2016-07-28'}");
 
         getDatabase().getCollection("books").insertOne(doc);

@@ -20,6 +20,7 @@ import dev.morphia.mapping.experimental.SetReference;
 import dev.morphia.mapping.experimental.SingleReference;
 import dev.morphia.mapping.lazy.proxy.ReferenceException;
 import dev.morphia.sofia.Sofia;
+import dev.morphia.utils.ReflectionUtils;
 import morphia.org.bson.codecs.pojo.TypeData;
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.dynamic.DynamicType.Loaded;
@@ -216,7 +217,7 @@ public class ReferenceCodec extends PropertyCodec<Object> implements PropertyHan
         ReferenceProxy referenceProxy = new ReferenceProxy(reference);
         try {
             Class<?> type = getField().getType();
-            String name = (type.getPackageName().startsWith("java") ? type.getSimpleName() : type.getName()) + "$$Proxy";
+            String name = (ReflectionUtils.getPackageName(type).startsWith("java") ? type.getSimpleName() : type.getName()) + "$$Proxy";
             return ((Loaded<T>) new ByteBuddy()
                                     .subclass(type)
                                     .implement(MorphiaProxy.class)

@@ -48,6 +48,7 @@ import dev.morphia.test.models.errors.ContainsXKeyMap;
 import dev.morphia.test.models.errors.IdOnEmbedded;
 import dev.morphia.test.models.errors.MissingId;
 import dev.morphia.test.models.errors.OuterClass.NonStaticInnerClass;
+import dev.morphia.utils.ReflectionUtils;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Assertions;
@@ -350,7 +351,7 @@ public class TestMapping extends TestBase {
         assertEquals(1, mappedClasses.size(), "Should be able to map explicitly passed class references");
 
         datastore = Morphia.createDatastore(TEST_DB_NAME);
-        datastore.getMapper().mapPackage(UnannotatedEmbedded.class.getPackageName());
+        datastore.getMapper().mapPackage(ReflectionUtils.getPackageName(UnannotatedEmbedded.class));
         assertFalse(datastore.getMapper().isMapped(UnannotatedEmbedded.class),
             "Should not be able to map unannotated classes with mapPackage");
     }
